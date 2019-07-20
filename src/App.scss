@@ -72,11 +72,13 @@ header {
 
     div {
       &.logo {
+        padding-left: 8px;
+        grid-area: 1 / 1;
+
         img {
           width: 24px;
         }
 
-        grid-area: 1 / 1;
       }
 
       &.settings {
@@ -141,6 +143,10 @@ main {
       border-right: 1px solid #f1f1f1;
       background-color: #fafafa;
 
+      li {
+        padding-left: 10px;
+      }
+
       &__project {
         margin-bottom: 5px;
         cursor: pointer;
@@ -176,6 +182,10 @@ main {
         }
       }
 
+      &__projects {
+        padding-left: 3px;
+      }
+
       &__project {
         @include va('left');
       }
@@ -186,10 +196,11 @@ main {
       }
 
       &__middle {
-        margin-top: 30px;
-        margin-bottom: 30px;
+        margin-top: 20px;
+        margin-bottom: 20px;
         display: flex;
         border-bottom: 1px solid #f1f1f1;
+        padding-left: 10px;
 
         span {
           color: #0000008a;
@@ -207,7 +218,7 @@ main {
 
       &__generic {
         li {
-          padding: 10px 0 10px 10px;
+          padding: 9px 0 9px 10px;
           margin-bottom: 5px;
           list-style-type: none;
           color: #333;
@@ -252,7 +263,7 @@ main {
         margin: 0 30px 20px 0;
       }
 
-      li {
+      &__list li {
         display: flex;
         line-height: 18px;
         color: #333;
@@ -282,8 +293,39 @@ main {
         }
       }
 
+      .project-overlay {
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 4px 11px;
+        position: absolute;
+        width: 100%;
+        z-index: 1;
+        top: 85px;
+        border-radius: 3px;
+
+        &__list li {
+          list-style-type: none;
+          display: flex;
+          line-height: 18px;
+          color: #333;
+          padding-top: 10px;
+          padding-bottom: 10px;
+          font-size: 14px;
+          list-style-type: none;
+          border-bottom: 1px solid #f0f0f0;
+          padding-left: 10px;
+          cursor: pointer;
+
+          &:hover {
+            background-color: #f9f9f9;
+          }
+        }
+      }
+
       .add-task {
         margin-top: 20px;
+
+        &__main {
+          position: relative;
+        }
 
         &__shallow {
           @include no-select;
@@ -322,6 +364,10 @@ main {
           height: 35px;
           padding-left: 10px;
           padding-right: 10px;
+        }
+
+        &__cancel, &__submit {
+          @include no-select;
         }
 
         &__cancel {
