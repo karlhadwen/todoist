@@ -1,53 +1,49 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import React, { useState, useEffect } from 'react';
-import { FaRegListAlt, FaRegFlag } from 'react-icons/fa';
+import React, { useState } from 'react';
+import { FaRegListAlt, FaRegFlag, FaRegCalendarAlt } from 'react-icons/fa';
 import { firebase } from '../firebase';
 import { ProjectOverlay } from './ProjectOverlay';
+import { TaskDate } from './TaskDate';
 
 export const AddTask = ({ projects, selectedProject }) => {
   const [task, setTask] = useState('');
   const [taskDate, setTaskDate] = useState(null);
   const [project, setProject] = useState();
-  const [showShallow, setShowShallow] = useState(true);
   const [showMain, setShowMain] = useState(false);
   const [showOverlay, setShowOverlay] = useState(false);
+  const [showTaskDate, setShowTaskDate] = useState(false);
 
-  useEffect(() => {
-    console.log(selectedProject);
-  }, [selectedProject]);
+  const addTask = () => {
+    const projectId = selectedProject || project;
 
-  // validate task date
-  // validate task project
-  const addTask = () =>
-    task &&
-    project &&
-    firebase
-      .firestore()
-      .collection('tasks')
-      .add({
-        archived: false,
-        projectId: selectedProject,
-        task,
-        userId: 'jlIFXIwyAL3tzHMtzRbw',
-      })
-      .then(() => {
-        setTask('');
-        setProject('');
-        setShowMain(false);
-      });
+    return (
+      task &&
+      projectId &&
+      firebase
+        .firestore()
+        .collection('tasks')
+        .add({
+          archived: false,
+          projectId,
+          task,
+          date: taskDate,
+          userId: 'jlIFXIwyAL3tzHMtzRbw',
+        })
+        .then(() => {
+          setTask('');
+          setProject('');
+          setShowMain(false);
+        })
+    );
+  };
 
   return (
     <div className="add-task">
-      {showShallow && (
-        <div
-          className="add-task__shallow"
-          onClick={() => setShowMain(!showMain)}
-        >
-          <span className="add-task__plus">+</span>
-          <span className="add-task__text">Add Task</span>
-        </div>
-      )}
+      <div className="add-task__shallow" onClick={() => setShowMain(!showMain)}>
+        <span className="add-task__plus">+</span>
+        <span className="add-task__text">Add Task</span>
+      </div>
       {showMain && (
         <div className="add-task__main">
           <ProjectOverlay
@@ -55,6 +51,11 @@ export const AddTask = ({ projects, selectedProject }) => {
             setProject={setProject}
             showOverlay={showOverlay}
             setShowOverlay={setShowOverlay}
+          />
+          <TaskDate
+            setTaskDate={setTaskDate}
+            showTaskDate={showTaskDate}
+            setShowTaskDate={setShowTaskDate}
           />
           <input
             className="add-task__content"
@@ -86,6 +87,12 @@ export const AddTask = ({ projects, selectedProject }) => {
             onClick={() => setShowOverlay(!showOverlay)}
           >
             <FaRegListAlt />
+          </span>
+          <span
+            className="add-task__date"
+            onClick={() => setShowTaskDate(!showTaskDate)}
+          >
+            <FaRegCalendarAlt />
           </span>
         </div>
       )}

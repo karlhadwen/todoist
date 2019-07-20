@@ -320,6 +320,43 @@ main {
         }
       }
 
+      .task-date {
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 4px 11px;
+        position: absolute;
+        width: 100%;
+        z-index: 1;
+        top: 85px;
+        border-radius: 3px;
+        width: 200px;
+        right: 0;
+
+        &__list li {
+          list-style-type: none;
+          display: flex;
+          line-height: 18px;
+          color: #333;
+          padding-top: 10px;
+          padding-bottom: 10px;
+          font-size: 14px;
+          list-style-type: none;
+          border-bottom: 1px solid #f0f0f0;
+          padding-left: 10px;
+          cursor: pointer;
+
+          &:hover {
+            background-color: #f9f9f9;
+          }
+
+          span:first-of-type {
+            margin-right: 10px;
+
+            svg {
+              fill: grey;
+            }
+          }
+        }
+      }
+
       .add-task {
         margin-top: 20px;
 
@@ -338,7 +375,7 @@ main {
           font-size: 18px;
         }
 
-        &__project, &__priority {
+        &__project, &__priority, &__date {
           cursor: pointer;
           float: right;
           color: gray;

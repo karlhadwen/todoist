@@ -3,10 +3,12 @@ import { firebase } from '../firebase';
 import { Checkbox } from './Checkbox';
 import { AddTask } from './AddTask';
 
-const useTasks = selectedProject => {
+const getProjectName = (projects, projectId) =>
+  projects.find(project => project.projectId === projectId);
+
+export const useTasks = selectedProject => {
   const [tasks, setTasks] = useState([]);
-  // return as an object so we can do like const { archivedTasks } = useTasks();
-  // const [archivedTasks, setArchivedTasks] = useState([]);
+  const [archivedTasks, setArchivedTasks] = useState([]);
 
   useEffect(() => {
     const unsubscribe = firebase
@@ -21,20 +23,17 @@ const useTasks = selectedProject => {
         }));
 
         setTasks(newTasks.filter(task => task.archived !== true));
-        // setArchivedTasks(newTasks.filter(task => task.archived !== false));
+        setArchivedTasks(newTasks.filter(task => task.archived !== false));
       });
 
     return () => unsubscribe();
   }, [selectedProject]);
 
-  return tasks;
+  return { tasks, archivedTasks };
 };
 
-const getProjectName = (projects, projectId) =>
-  projects.find(project => project.projectId === projectId);
-
 export const Tasks = ({ projects, selectedProject }) => {
-  const tasks = useTasks(selectedProject);
+  const { tasks, archivedTasks } = useTasks(selectedProject);
   let projectName = 'Inbox';
 
   if (projects && selectedProject) {
