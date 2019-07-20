@@ -5,7 +5,7 @@ import { FaRegListAlt, FaRegFlag } from 'react-icons/fa';
 import { firebase } from '../firebase';
 import { ProjectOverlay } from './ProjectOverlay';
 
-export const AddTask = ({ projects }) => {
+export const AddTask = ({ projects, selectedProject }) => {
   const [task, setTask] = useState('');
   const [taskDate, setTaskDate] = useState(null);
   const [project, setProject] = useState();
@@ -14,8 +14,8 @@ export const AddTask = ({ projects }) => {
   const [showOverlay, setShowOverlay] = useState(false);
 
   useEffect(() => {
-    console.log(project);
-  }, [project]);
+    console.log(selectedProject);
+  }, [selectedProject]);
 
   // validate task date
   // validate task project
@@ -27,7 +27,7 @@ export const AddTask = ({ projects }) => {
       .collection('tasks')
       .add({
         archived: false,
-        projectId: 'tasks/TMe0NfakwAUmBJ8aD1Od',
+        projectId: selectedProject,
         task,
         userId: 'jlIFXIwyAL3tzHMtzRbw',
       })
@@ -69,7 +69,13 @@ export const AddTask = ({ projects }) => {
           >
             Add Task
           </button>
-          <span className="add-task__cancel" onClick={() => setShowMain(false)}>
+          <span
+            className="add-task__cancel"
+            onClick={() => {
+              setShowMain(false);
+              setShowOverlay(false);
+            }}
+          >
             Cancel
           </span>
           <span className="add-task__priority">

@@ -9,7 +9,7 @@ import {
 } from 'react-icons/fa';
 import { Projects } from '../Projects';
 
-export const Sidebar = ({ projects }) => {
+export const Sidebar = ({ projects, setSelectedProject }) => {
   const [active, setActive] = useState('inbox');
 
   return (
@@ -52,7 +52,7 @@ export const Sidebar = ({ projects }) => {
       </div>
 
       <ul className="sidebar__projects">
-        <Projects projects={projects} />
+        <Projects projects={projects} setSelectedProject={setSelectedProject} />
       </ul>
     </div>
   );
