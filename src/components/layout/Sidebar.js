@@ -9,7 +9,7 @@ import {
 } from 'react-icons/fa';
 import { Projects } from '../Projects';
 
-export const Sidebar = ({ projects = {} }) => {
+export const Sidebar = ({ projects }) => {
   const [active, setActive] = useState('inbox');
 
   return (
