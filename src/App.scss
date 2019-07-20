@@ -148,11 +148,12 @@ main {
       }
 
       &__project {
-        margin-bottom: 5px;
+        padding: 5px 0;
         cursor: pointer;
 
-        &.active {
-          font-weight: bold
+        &.active, &:hover {
+          font-weight: bold;
+          background-color: white;
         }
 
         &:nth-child(1) {
@@ -218,13 +219,12 @@ main {
 
       &__generic {
         li {
-          padding: 9px 0 9px 10px;
-          margin-bottom: 5px;
+          padding: 10px 0 10px 10px;
           list-style-type: none;
           color: #333;
           display: flex;
           cursor: pointer;
-          line-height: 1.25;
+          line-height: 1.50;
           font-size: 15px;
 
           span:first-of-type {
@@ -237,7 +237,7 @@ main {
             }
           }
 
-          &.active {
+          &.active, &:hover {
             font-weight: bold;
             background-color: white;
           }
