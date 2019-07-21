@@ -27,8 +27,6 @@ export const AddTask = ({ projects, selectedProject }) => {
         .format('DD/MM/YYYY');
     }
 
-    console.log(taskDate);
-
     return (
       task &&
       projectId &&
@@ -56,6 +54,7 @@ export const AddTask = ({ projects, selectedProject }) => {
         <span className="add-task__plus">+</span>
         <span className="add-task__text">Add Task</span>
       </div>
+
       {showMain && (
         <div className="add-task__main">
           <ProjectOverlay
