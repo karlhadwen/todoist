@@ -13,9 +13,10 @@ export const Sidebar = ({ projects, setSelectedProject }) => {
   const [active, setActive] = useState('inbox');
 
   return (
-    <div className="sidebar">
+    <div className="sidebar" data-testid="sidebar">
       <ul className="sidebar__generic">
         <li
+          data-testid="inbox"
           className={active === 'inbox' ? 'active' : undefined}
           onClick={() => {
             setActive('inbox');
@@ -28,6 +29,7 @@ export const Sidebar = ({ projects, setSelectedProject }) => {
           <span>Inbox</span>
         </li>
         <li
+          data-testid="today"
           className={active === 'today' ? 'active' : undefined}
           onClick={() => {
             setActive('today');
@@ -40,6 +42,7 @@ export const Sidebar = ({ projects, setSelectedProject }) => {
           <span>Today</span>
         </li>
         <li
+          data-testid="next_7"
           className={active === 'next7' ? 'active' : undefined}
           onClick={() => {
             setActive('next7');
@@ -63,6 +66,11 @@ export const Sidebar = ({ projects, setSelectedProject }) => {
       <ul className="sidebar__projects">
         <Projects projects={projects} setSelectedProject={setSelectedProject} />
       </ul>
+
+      <div className="add-project">
+        <span className="add-project__plus">+</span>
+        <span className="add-project__text">Add Project</span>
+      </div>
     </div>
   );
 };

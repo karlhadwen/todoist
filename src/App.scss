@@ -245,6 +245,29 @@ main {
       }
     }
 
+    .add-project {
+      padding-left: 13px;
+      margin-top: 20px;
+    }
+
+    .add-task__shallow, .add-project {
+      @include no-select;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+
+    .add-task__plus, .add-project__plus {
+      color: #dd4b39;
+      font-size: 18px;
+    }
+
+    .add-task__text, .add-project__text {
+      display: inline-block;
+      color: gray;
+      font-size: 14px;
+      margin-left: 15px;
+    }
+
     .tasks {
       width: 656px;
       background-color: #fff;
@@ -364,16 +387,6 @@ main {
           position: relative;
         }
 
-        &__shallow {
-          @include no-select;
-          cursor: pointer;
-          margin-bottom: 20px;
-        }
-
-        &__plus {
-          color: #dd4b39;
-          font-size: 18px;
-        }
 
         &__project, &__date {
           cursor: pointer;
@@ -384,13 +397,6 @@ main {
 
         &__project {
           margin-right: 0;
-        }
-
-        &__text {
-          display: inline-block;
-          color: gray;
-          font-size: 14px;
-          margin-left: 15px;
         }
 
         &__content {
