@@ -49,7 +49,7 @@ export const AddTask = ({ projects, selectedProject }) => {
   };
 
   return (
-    <div className="add-task">
+    <div className="add-task" data-testid="add-task">
       <div className="add-task__shallow" onClick={() => setShowMain(!showMain)}>
         <span className="add-task__plus">+</span>
         <span className="add-task__text">Add Task</span>

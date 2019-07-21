@@ -16,7 +16,7 @@ describe('<Sidebar />', () => {
     jest.clearAllMocks();
   });
 
-  it('it renders the sidebar', () => {
+  it('renders the sidebar', () => {
     const { queryByTestId } = render(
       <Sidebar projects={projects} setSelectedProject={setSelectedProject} />
     );
