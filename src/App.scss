@@ -375,14 +375,14 @@ main {
           font-size: 18px;
         }
 
-        &__project, &__priority, &__date {
+        &__project, &__date {
           cursor: pointer;
           float: right;
           color: gray;
-          margin: 15px 10px;
+          margin: 20px 10px;
         }
 
-        &__priority {
+        &__project {
           margin-right: 0;
         }
 
@@ -419,7 +419,7 @@ main {
           color: #fff !important;
           border: 1px solid transparent;
           margin-right: 5px;
-          margin-top: 5px;
+          margin-top: 10px;
           font-weight: bold;
           font-size: 13px !important;
           line-height: 17px;

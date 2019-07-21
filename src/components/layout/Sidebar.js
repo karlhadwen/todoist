@@ -17,7 +17,10 @@ export const Sidebar = ({ projects, setSelectedProject }) => {
       <ul className="sidebar__generic">
         <li
           className={active === 'inbox' ? 'active' : undefined}
-          onClick={() => setActive('inbox')}
+          onClick={() => {
+            setActive('inbox');
+            setSelectedProject('INBOX');
+          }}
         >
           <span>
             <FaInbox />
@@ -26,7 +29,10 @@ export const Sidebar = ({ projects, setSelectedProject }) => {
         </li>
         <li
           className={active === 'today' ? 'active' : undefined}
-          onClick={() => setActive('today')}
+          onClick={() => {
+            setActive('today');
+            setSelectedProject('TODAY');
+          }}
         >
           <span>
             <FaRegCalendar />
@@ -35,7 +41,10 @@ export const Sidebar = ({ projects, setSelectedProject }) => {
         </li>
         <li
           className={active === 'next7' ? 'active' : undefined}
-          onClick={() => setActive('next7')}
+          onClick={() => {
+            setActive('next7');
+            setSelectedProject('NEXT_7');
+          }}
         >
           <span>
             <FaRegCalendarAlt />

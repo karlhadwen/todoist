@@ -1,21 +1,33 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useState } from 'react';
-import { FaRegListAlt, FaRegFlag, FaRegCalendarAlt } from 'react-icons/fa';
+import { FaRegListAlt, FaRegCalendarAlt } from 'react-icons/fa';
+import moment from 'moment';
 import { firebase } from '../firebase';
 import { ProjectOverlay } from './ProjectOverlay';
 import { TaskDate } from './TaskDate';
 
 export const AddTask = ({ projects, selectedProject }) => {
   const [task, setTask] = useState('');
-  const [taskDate, setTaskDate] = useState(null);
+  const [taskDate, setTaskDate] = useState('');
   const [project, setProject] = useState();
   const [showMain, setShowMain] = useState(false);
   const [showOverlay, setShowOverlay] = useState(false);
   const [showTaskDate, setShowTaskDate] = useState(false);
 
   const addTask = () => {
-    const projectId = selectedProject || project;
+    const projectId = project || selectedProject;
+    let collatedDate = '';
+
+    if (projectId === 'TODAY') {
+      collatedDate = moment().format('DD/MM/YYYY');
+    } else if (projectId === 'NEXT_7') {
+      collatedDate = moment()
+        .add(7, 'days')
+        .format('DD/MM/YYYY');
+    }
+
+    console.log(taskDate);
 
     return (
       task &&
@@ -27,7 +39,7 @@ export const AddTask = ({ projects, selectedProject }) => {
           archived: false,
           projectId,
           task,
-          date: taskDate,
+          date: collatedDate || taskDate,
           userId: 'jlIFXIwyAL3tzHMtzRbw',
         })
         .then(() => {
@@ -78,9 +90,6 @@ export const AddTask = ({ projects, selectedProject }) => {
             }}
           >
             Cancel
-          </span>
-          <span className="add-task__priority">
-            <FaRegFlag />
           </span>
           <span
             className="add-task__project"
