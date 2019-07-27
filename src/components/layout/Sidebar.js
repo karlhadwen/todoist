@@ -8,8 +8,9 @@ import {
   FaRegCalendar,
 } from 'react-icons/fa';
 import { Projects } from '../Projects';
+import { AddProject } from '../AddProject';
 
-export const Sidebar = ({ projects, setSelectedProject }) => {
+export const Sidebar = ({ projects, setProjects, setSelectedProject }) => {
   const [active, setActive] = useState('inbox');
 
   return (
@@ -67,10 +68,7 @@ export const Sidebar = ({ projects, setSelectedProject }) => {
         <Projects projects={projects} setSelectedProject={setSelectedProject} />
       </ul>
 
-      <div className="add-project">
-        <span className="add-project__plus">+</span>
-        <span className="add-project__text">Add Project</span>
-      </div>
+      <AddProject projects={projects} setProjects={setProjects} />
     </div>
   );
 };

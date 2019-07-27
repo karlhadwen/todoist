@@ -25,7 +25,7 @@ export const Tasks = ({ projects, selectedProject }) => {
 
       <ul className="tasks__list">
         {tasks.map(task => (
-          <li key={task.projectId}>
+          <li key={`${task.id}`}>
             <Checkbox id={task.id} />
             <span>{task.task}</span>
           </li>
