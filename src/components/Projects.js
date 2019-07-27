@@ -3,9 +3,12 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React, { useState } from 'react';
 import { FaTrashAlt } from 'react-icons/fa';
+import { useSelectedProjectValue, useProjectsValue } from '../context';
 
-export const Projects = ({ projects, setSelectedProject }) => {
+export const Projects = () => {
   const [active, setActive] = useState();
+  const { setSelectedProject } = useSelectedProjectValue();
+  const { projects } = useProjectsValue();
 
   return (
     projects &&

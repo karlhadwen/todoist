@@ -5,8 +5,11 @@ import { AddTask } from './AddTask';
 import { collatedTasks } from '../constants';
 import { getTitle, getCollatedTitle, collatedTasksExist } from '../helpers';
 import { useTasks } from '../hooks';
+import { useSelectedProjectValue, useProjectsValue } from '../context';
 
-export const Tasks = ({ projects, selectedProject }) => {
+export const Tasks = () => {
+  const { selectedProject } = useSelectedProjectValue();
+  const { projects } = useProjectsValue();
   const { tasks } = useTasks(selectedProject);
 
   let projectName = 'Inbox';
@@ -32,7 +35,7 @@ export const Tasks = ({ projects, selectedProject }) => {
         ))}
       </ul>
 
-      <AddTask projects={projects} selectedProject={selectedProject} />
+      <AddTask />
     </div>
   );
 };

@@ -6,10 +6,9 @@ import moment from 'moment';
 import { firebase } from '../firebase';
 import { ProjectOverlay } from './ProjectOverlay';
 import { TaskDate } from './TaskDate';
+import { useSelectedProjectValue } from '../context';
 
 export const AddTask = ({
-  projects,
-  selectedProject,
   showAddTaskMain = true,
   shouldShowMain = false,
   showQuickAddTask,
@@ -21,6 +20,8 @@ export const AddTask = ({
   const [showMain, setShowMain] = useState(shouldShowMain);
   const [showOverlay, setShowOverlay] = useState(false);
   const [showTaskDate, setShowTaskDate] = useState(false);
+
+  const { selectedProject } = useSelectedProjectValue();
 
   const addTask = () => {
     const projectId = project || selectedProject;
@@ -52,7 +53,6 @@ export const AddTask = ({
           setProject('');
           setShowMain(false);
           setShowOverlay(false);
-          setShowQuickAddTask(false);
         })
     );
   };
@@ -90,7 +90,6 @@ export const AddTask = ({
             </>
           )}
           <ProjectOverlay
-            projects={projects}
             setProject={setProject}
             showOverlay={showOverlay}
             setShowOverlay={setShowOverlay}
