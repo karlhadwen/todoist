@@ -4,12 +4,7 @@ import React, { useState } from 'react';
 import { FaPizzaSlice } from 'react-icons/fa';
 import { AddTask } from '../AddTask';
 
-export const Header = ({
-  selectedProject,
-  projects,
-  darkMode,
-  setDarkMode,
-}) => {
+export const Header = ({ darkMode, setDarkMode }) => {
   const [shouldShowMain, setShouldShowMain] = useState(false);
   const [showQuickAddTask, setShowQuickAddTask] = useState(false);
 
@@ -41,8 +36,6 @@ export const Header = ({
       </nav>
 
       <AddTask
-        selectedProject={selectedProject}
-        projects={projects}
         showAddTaskMain={false}
         shouldShowMain={shouldShowMain}
         showQuickAddTask={showQuickAddTask}

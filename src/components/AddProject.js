@@ -2,12 +2,15 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useState } from 'react';
 import { firebase } from '../firebase';
-import { generatePushId } from '../helpers/generate-pushid';
+import { generatePushId } from '../helpers';
+import { useProjectsValue } from '../context';
 
-export const AddProject = ({ projects, setProjects }) => {
+export const AddProject = () => {
   const [show, setShow] = useState(false);
   const [projectName, setProjectName] = useState('');
+
   const projectId = generatePushId();
+  const { projects, setProjects } = useProjectsValue();
 
   const addProject = () =>
     projectName &&
