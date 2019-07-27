@@ -4,7 +4,12 @@ import React, { useState } from 'react';
 import { FaPizzaSlice } from 'react-icons/fa';
 import { AddTask } from '../AddTask';
 
-export const Header = ({ selectedProject, projects }) => {
+export const Header = ({
+  selectedProject,
+  projects,
+  darkMode,
+  setDarkMode,
+}) => {
   const [shouldShowMain, setShouldShowMain] = useState(false);
   const [showQuickAddTask, setShowQuickAddTask] = useState(false);
 
@@ -25,7 +30,10 @@ export const Header = ({ selectedProject, projects }) => {
             >
               +
             </li>
-            <li className="settings__dark-mode">
+            <li
+              className="settings__dark-mode"
+              onClick={() => setDarkMode(!darkMode)}
+            >
               <FaPizzaSlice />
             </li>
           </ul>

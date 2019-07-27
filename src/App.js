@@ -7,10 +7,19 @@ import { useProjects } from './hooks';
 export const App = () => {
   const { projects, setProjects } = useProjects();
   const [selectedProject, setSelectedProject] = useState('INBOX');
+  const [darkMode, setDarkMode] = useState(false);
 
   return (
-    <main data-testid="application">
-      <Header projects={projects} selectedProject={selectedProject} />
+    <main
+      data-testid="application"
+      className={darkMode ? 'darkmode' : undefined}
+    >
+      <Header
+        projects={projects}
+        selectedProject={selectedProject}
+        darkMode={darkMode}
+        setDarkMode={setDarkMode}
+      />
       <Content
         projects={projects}
         setProjects={setProjects}
