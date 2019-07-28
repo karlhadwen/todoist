@@ -109,6 +109,12 @@ $generic-bg: #db4c3f;
   }
 }
 
+@mixin mq($from) {
+  @media (max-width: $from) {
+    @content;
+  }
+}
+
 /* Darkmode
   ============================================ */
 .darkmode {
@@ -132,6 +138,10 @@ header {
   position: fixed;
   top: 0;
   width: 100%;
+
+  @include mq('900px') {
+    padding: 0 10px;
+  }
 
   nav {
     display: grid;
@@ -210,6 +220,10 @@ header {
   overflow-y: hidden;
   border-right: $generic-border;
   background-color: #fafafa;
+
+  @include mq('900px') {
+    display: none;
+  }
 
   li {
     padding-left: 10px;
@@ -350,6 +364,11 @@ header {
   padding-right: 40px;
   padding-top: 80px;
   padding-bottom: 84px;
+
+  @include mq('900px') {
+    margin-left: 0;
+    width: auto;
+  }
 
   h2 {
     font-size: 20px;
