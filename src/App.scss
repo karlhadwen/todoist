@@ -118,7 +118,7 @@ $generic-bg: #db4c3f;
 /* Darkmode
   ============================================ */
 .darkmode {
-  .header {
+  header {
     -webkit-box-shadow: 0 1px 3px 0 rgba(0,0,0,0.15);
     box-shadow: 0 1px 3px 0 rgba(0,0,0,0.15);
     background-color: #282828;
@@ -337,6 +337,38 @@ header {
         font-weight: bold;
         background-color: white;
       }
+    }
+  }
+}
+
+/* Show Confirm Delete
+  ============================================ */
+.project-delete-modal {
+  position: relative;
+
+  &__inner {
+    @include box-overlay();
+    z-index: 99;
+    width: 200px;
+    padding: 10px;
+    top: 10px;
+    right: 0;
+    background-color: white;
+
+    p {
+      margin-top: 5px;
+      margin-bottom: 5px;
+      line-height: normal;
+      font-weight: normal;
+      font-size: 15px;
+    }
+
+    button {
+      @include btn('50px');
+    }
+    span {
+      @include cancel();
+      font-weight: normal;
     }
   }
 }

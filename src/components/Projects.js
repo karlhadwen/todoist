@@ -2,8 +2,8 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React, { useState } from 'react';
-import { FaTrashAlt } from 'react-icons/fa';
 import { useSelectedProjectValue, useProjectsValue } from '../context';
+import { IndividualProject } from './IndividualProject';
 
 export const Projects = () => {
   const [active, setActive] = useState();
@@ -25,14 +25,7 @@ export const Projects = () => {
           setSelectedProject(project.projectId);
         }}
       >
-        <span className="sidebar__dot">•</span>
-        <span className="sidebar__project-name">{project.name}</span>
-        <span
-          className="sidebar__project-delete"
-          onClick={() => console.log('Deleting...')}
-        >
-          <FaTrashAlt />
-        </span>
+        <IndividualProject project={project} />
       </li>
     ))
   );
