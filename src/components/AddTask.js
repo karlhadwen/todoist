@@ -18,7 +18,7 @@ export const AddTask = ({
   const [taskDate, setTaskDate] = useState('');
   const [project, setProject] = useState('');
   const [showMain, setShowMain] = useState(shouldShowMain);
-  const [showOverlay, setShowOverlay] = useState(false);
+  const [showProjectOverlay, setShowProjectOverlay] = useState(false);
   const [showTaskDate, setShowTaskDate] = useState(false);
 
   const { selectedProject } = useSelectedProjectValue();
@@ -52,7 +52,7 @@ export const AddTask = ({
           setTask('');
           setProject('');
           setShowMain(false);
-          setShowOverlay(false);
+          setShowProjectOverlay(false);
         })
     );
   };
@@ -60,11 +60,12 @@ export const AddTask = ({
   return (
     <div
       className={showQuickAddTask ? 'add-task add-task__overlay' : 'add-task'}
-      data-testid="add-task"
+      data-testid="add-task-comp"
     >
       {showAddTaskMain && (
         <div
           className="add-task__shallow"
+          data-testid="show-main-action"
           onClick={() => setShowMain(!showMain)}
         >
           <span className="add-task__plus">+</span>
@@ -73,26 +74,29 @@ export const AddTask = ({
       )}
 
       {(showMain || showQuickAddTask) && (
-        <div className="add-task__main">
+        <div className="add-task__main" data-testid="add-task-main">
           {showQuickAddTask && (
             <>
-              <h2 className="header">Quick Add Task</h2>
-              <span
-                className="add-task__cancel-x"
-                onClick={() => {
-                  setShowMain(false);
-                  setShowOverlay(false);
-                  setShowQuickAddTask(false);
-                }}
-              >
-                X
-              </span>
+              <div data-testid="quick-add-task">
+                <h2 className="header">Quick Add Task</h2>
+                <span
+                  className="add-task__cancel-x"
+                  data-testid="add-task-quick-cancel"
+                  onClick={() => {
+                    setShowMain(false);
+                    setShowProjectOverlay(false);
+                    setShowQuickAddTask(false);
+                  }}
+                >
+                  X
+                </span>
+              </div>
             </>
           )}
           <ProjectOverlay
             setProject={setProject}
-            showOverlay={showOverlay}
-            setShowOverlay={setShowOverlay}
+            showProjectOverlay={showProjectOverlay}
+            setShowProjectOverlay={setShowProjectOverlay}
           />
           <TaskDate
             setTaskDate={setTaskDate}
@@ -101,6 +105,7 @@ export const AddTask = ({
           />
           <input
             className="add-task__content"
+            data-testid="add-task-content"
             type="text"
             value={task}
             onChange={e => setTask(e.target.value)}
@@ -108,6 +113,7 @@ export const AddTask = ({
           <button
             type="button"
             className="add-task__submit"
+            data-testid="add-task"
             onClick={() => addTask()}
           >
             Add Task
@@ -115,9 +121,10 @@ export const AddTask = ({
           {!showQuickAddTask && (
             <span
               className="add-task__cancel"
+              data-testid="add-task-main-cancel"
               onClick={() => {
                 setShowMain(false);
-                setShowOverlay(false);
+                setShowProjectOverlay(false);
               }}
             >
               Cancel
@@ -125,12 +132,14 @@ export const AddTask = ({
           )}
           <span
             className="add-task__project"
-            onClick={() => setShowOverlay(!showOverlay)}
+            data-testid="show-project-overlay"
+            onClick={() => setShowProjectOverlay(!showProjectOverlay)}
           >
             <FaRegListAlt />
           </span>
           <span
             className="add-task__date"
+            data-testid="show-task-date-overlay"
             onClick={() => setShowTaskDate(!showTaskDate)}
           >
             <FaRegCalendarAlt />
