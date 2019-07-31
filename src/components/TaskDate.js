@@ -29,6 +29,7 @@ export const TaskDate = ({ setTaskDate, showTaskDate, setShowTaskDate }) =>
                 .format('DD/MM/YYYY')
             );
           }}
+          data-testid="task-date-tomorrow"
         >
           <span>
             <FaSun />
@@ -44,6 +45,7 @@ export const TaskDate = ({ setTaskDate, showTaskDate, setShowTaskDate }) =>
                 .format('DD/MM/YYYY')
             );
           }}
+          data-testid="task-date-next-week"
         >
           <span>
             <FaRegPaperPlane />

@@ -9,18 +9,14 @@ import { useTasks } from '../hooks';
 import { useSelectedProjectValue, useProjectsValue } from '../context';
 
 export const Tasks = () => {
-  const { selectedProject, setSelectedProject } = useSelectedProjectValue();
+  const { selectedProject } = useSelectedProjectValue();
   const { projects } = useProjectsValue();
   const { tasks } = useTasks(selectedProject);
 
-  let projectName = 'Inbox';
+  let projectName = '';
 
   if (projects && selectedProject && !collatedTasksExist(selectedProject)) {
-    projectName = getTitle(projects, selectedProject);
-
-    !projectName
-      ? setSelectedProject('INBOX')
-      : (projectName = projectName.name);
+    projectName = getTitle(projects, selectedProject).name;
   }
 
   if (collatedTasksExist(selectedProject) && selectedProject) {

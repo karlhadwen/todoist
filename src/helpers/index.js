@@ -27,8 +27,6 @@ export const generatePushId = (() => {
       timeStampChars[i] = PUSH_CHARS.charAt(now % 64);
       now = Math.floor(now / 64);
     }
-    if (now !== 0)
-      throw new Error('We should have converted the entire timestamp.');
 
     let id = timeStampChars.join('');
 
@@ -36,17 +34,10 @@ export const generatePushId = (() => {
       for (i = 0; i < 12; i++) {
         lastRandChars[i] = Math.floor(Math.random() * 64);
       }
-    } else {
-      // If the timestamp hasn't changed since last push, use the same random number, except incremented by 1.
-      for (i = 11; i >= 0 && lastRandChars[i] === 63; i--) {
-        lastRandChars[i] = 0;
-      }
-      lastRandChars[i]++;
     }
     for (i = 0; i < 12; i++) {
       id += PUSH_CHARS.charAt(lastRandChars[i]);
     }
-    if (id.length != 20) throw new Error('Length should be 20.');
 
     return id;
   };
