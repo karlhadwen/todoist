@@ -189,16 +189,4 @@ describe('<AddTask />', () => {
       fireEvent.click(queryByTestId('add-task'));
     });
   });
-
-  describe('Failure', () => {
-    it('does not render <AddTask />', () => {});
-    it('does not render the <AddTask /> quick overlay', () => {});
-    it('does not render the <AddTask /> main showable when clicked', () => {});
-    it('does not render the <AddTask /> project overlay when clicked', () => {});
-    it('does not render the <AddTask /> task date overlay when clicked', () => {});
-    it('does not hide the <AddTask /> main when cancel is clicked', () => {});
-    it('does not render <AddTask /> & adds a task to the inbox & clears state', () => {});
-    it('does not render <AddTask /> & adds a task to tomorrow & clears component state', () => {});
-    it('does not render <AddTask /> & adds a task to next 7 days & clears state', () => {});
-  });
 });
