@@ -19,7 +19,6 @@ export const generatePushId = (() => {
 
   return function() {
     let now = new Date().getTime();
-    const duplicateTime = now === lastPushTime;
     lastPushTime = now;
 
     const timeStampChars = new Array(8);
@@ -30,11 +29,6 @@ export const generatePushId = (() => {
 
     let id = timeStampChars.join('');
 
-    if (!duplicateTime) {
-      for (i = 0; i < 12; i++) {
-        lastRandChars[i] = Math.floor(Math.random() * 64);
-      }
-    }
     for (i = 0; i < 12; i++) {
       id += PUSH_CHARS.charAt(lastRandChars[i]);
     }
