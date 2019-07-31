@@ -9,7 +9,7 @@ export const Header = ({ darkMode, setDarkMode }) => {
   const [showQuickAddTask, setShowQuickAddTask] = useState(false);
 
   return (
-    <header className="header">
+    <header className="header" data-testid="header">
       <nav>
         <div className="logo">
           <img src="/images/logo.png" alt="Todoist" />
@@ -27,6 +27,7 @@ export const Header = ({ darkMode, setDarkMode }) => {
               +
             </li>
             <li
+              data-testid="dark-mode-action"
               className="settings__dark-mode"
               onClick={() => setDarkMode(!darkMode)}
             >
