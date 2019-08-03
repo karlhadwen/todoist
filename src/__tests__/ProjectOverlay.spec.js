@@ -8,7 +8,12 @@ beforeEach(cleanup); // clean clean clean the DOM!
 jest.mock('../context', () => ({
   useProjectsValue: jest.fn(() => ({
     projects: [
-      { name: '🙌 THE OFFICE', projectId: '1', userId: 'jlIFXIwyAL3tzHMtzRbw' },
+      {
+        name: '🙌 THE OFFICE',
+        projectId: '1',
+        userId: 'jlIFXIwyAL3tzHMtzRbw',
+        docId: 'michael-scott',
+      },
     ],
   })),
 }));

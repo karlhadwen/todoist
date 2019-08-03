@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React, { useState } from 'react';
@@ -14,6 +15,7 @@ import { useSelectedProjectValue } from '../../context';
 export const Sidebar = () => {
   const { setSelectedProject } = useSelectedProjectValue();
   const [active, setActive] = useState('inbox');
+  const [showProjects, setShowProjects] = useState(true);
 
   return (
     <div className="sidebar" data-testid="sidebar">
@@ -59,18 +61,21 @@ export const Sidebar = () => {
         </li>
       </ul>
 
-      <div className="sidebar__middle">
+      <div
+        className="sidebar__middle"
+        onClick={() => setShowProjects(!showProjects)}
+      >
         <span>
-          <FaChevronDown />
+          <FaChevronDown
+            className={!showProjects ? 'hidden-projects' : undefined}
+          />
         </span>
         <h2>Projects</h2>
       </div>
 
-      <ul className="sidebar__projects">
-        <Projects />
-      </ul>
+      <ul className="sidebar__projects">{showProjects && <Projects />}</ul>
 
-      <AddProject />
+      {showProjects && <AddProject />}
     </div>
   );
 };

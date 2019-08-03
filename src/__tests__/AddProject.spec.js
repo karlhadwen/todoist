@@ -5,8 +5,18 @@ import { AddProject } from '../components/AddProject';
 jest.mock('../context', () => ({
   useProjectsValue: jest.fn(() => ({
     projects: [
-      { name: '🙌 THE OFFICE', projectId: '1', userId: '2' },
-      { name: '🎯 FUTURE', projectId: '2', userId: '1' },
+      {
+        name: '🙌 THE OFFICE',
+        projectId: '1',
+        userId: '2',
+        docId: 'michael-scott',
+      },
+      {
+        name: '🎯 FUTURE',
+        projectId: '2',
+        userId: '1',
+        docId: 'future-is-good',
+      },
     ],
     setProjects: jest.fn(),
   })),
