@@ -29,6 +29,7 @@ export const IndividualProject = ({ project }) => {
       <span className="sidebar__project-name">{project.name}</span>
       <span
         className="sidebar__project-delete"
+        data-testid="delete-project"
         onClick={() => setShowConfirm(!showConfirm)}
       >
         <FaTrashAlt />
