@@ -17,7 +17,6 @@ export const generatePushId = (() => {
 
   return function() {
     let now = new Date().getTime();
-    const lastPushTime = now;
 
     const timeStampChars = new Array(8);
     for (var i = 7; i >= 0; i--) {
