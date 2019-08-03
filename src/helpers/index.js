@@ -13,13 +13,11 @@ export const generatePushId = (() => {
   const PUSH_CHARS =
     '-0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz';
 
-  let lastPushTime = 0;
-
   const lastRandChars = [];
 
   return function() {
     let now = new Date().getTime();
-    lastPushTime = now;
+    const lastPushTime = now;
 
     const timeStampChars = new Array(8);
     for (var i = 7; i >= 0; i--) {
