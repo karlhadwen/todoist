@@ -10,9 +10,9 @@ export const AddProject = ({ shouldShow = false }) => {
   const [projectName, setProjectName] = useState('');
 
   const projectId = generatePushId();
-  const { projects, setProjects } = useProjectsValue();
+  const { setProjects } = useProjectsValue();
 
-  const addProject = () =>
+  const addProject = async () =>
     projectName &&
     firebase
       .firestore()
@@ -23,13 +23,7 @@ export const AddProject = ({ shouldShow = false }) => {
         userId: 'jlIFXIwyAL3tzHMtzRbw',
       })
       .then(() => {
-        const newProjects = [
-          ...projects,
-          { name: projectName, projectId, userId: 'jlIFXIwyAL3tzHMtzRbw' },
-        ];
-        newProjects.sort((a, b) => (a.projectId > b.projectId ? 1 : -1));
-        setProjects(newProjects);
-
+        setProjects([]);
         setProjectName('');
         setShow(false);
       });
