@@ -298,10 +298,15 @@ header {
     display: flex;
     border-bottom: $generic-border;
     padding-left: 10px;
+    cursor: pointer;
 
     span {
       color: #0000008a;
       margin-right: 10px;
+
+      svg.hidden-projects {
+        transform: rotate(-90deg);
+      }
     }
 
     h2 {

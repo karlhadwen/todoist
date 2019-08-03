@@ -7,11 +7,36 @@ jest.mock('../context', () => ({
   useSelectedProjectValue: jest.fn(),
   useProjectsValue: jest.fn(() => ({
     projects: [
-      { name: '🙌 THE OFFICE', projectId: '1', userId: 'jlIFXIwyAL3tzHMtzRbw' },
-      { name: '🚀 DAILY', projectId: '2', userId: 'jlIFXIwyAL3tzHMtzRbw' },
-      { name: '🎯 FUTURE', projectId: '3', userId: 'jlIFXIwyAL3tzHMtzRbw' },
-      { name: '📚 WORDS', projectId: '4', userId: 'jlIFXIwyAL3tzHMtzRbw' },
-      { name: '🎵 MUSIC', projectId: '5', userId: 'jlIFXIwyAL3tzHMtzRbw' },
+      {
+        name: '🙌 THE OFFICE',
+        projectId: '1',
+        userId: 'jlIFXIwyAL3tzHMtzRbw',
+        docId: 'michael-scott',
+      },
+      {
+        name: '🚀 DAILY',
+        projectId: '2',
+        userId: 'jlIFXIwyAL3tzHMtzRbw',
+        docId: 'daily-office',
+      },
+      {
+        name: '🎯 FUTURE',
+        projectId: '3',
+        userId: 'jlIFXIwyAL3tzHMtzRbw',
+        docId: 'wake-up',
+      },
+      {
+        name: '📚 WORDS',
+        projectId: '4',
+        userId: 'jlIFXIwyAL3tzHMtzRbw',
+        docId: 'arcade-fire',
+      },
+      {
+        name: '🎵 MUSIC',
+        projectId: '5',
+        userId: 'jlIFXIwyAL3tzHMtzRbw',
+        docId: 'bella-ciao',
+      },
     ],
   })),
 }));

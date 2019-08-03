@@ -27,7 +27,7 @@ jest.mock('../context', () => ({
         name: '🙌 THE OFFICE',
         projectId: '1',
         userId: 'jlIFXIwyAL3tzHMtzRbw',
-        docId: '9x4NLfs9TtIJEc7uuCK4',
+        docId: 'michael-scott',
       },
     ],
     setProjects: jest.fn(),
