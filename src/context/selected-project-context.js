@@ -12,4 +12,5 @@ export const SelectedProjectProvider = ({ children }) => {
     </SelectedProjectContext.Provider>
   );
 };
+
 export const useSelectedProjectValue = () => useContext(SelectedProjectContext);

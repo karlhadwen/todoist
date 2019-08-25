@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './App.scss';
 import { Header } from './components/layout/Header';
 import { Content } from './components/layout/Content';
 import { ProjectsProvider, SelectedProjectProvider } from './context';

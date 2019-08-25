@@ -5,10 +5,12 @@
 
 // General Settings
 html {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 *, *:before, *:after {
-  box-sizing: inherit;
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
 }
 
 body {
@@ -36,7 +38,8 @@ $generic-bg: #db4c3f;
 /* Mixins
   ============================================ */
 @mixin box-overlay() {
-  box-shadow: $generic-box-shadow;
+  -webkit-box-shadow: $generic-box-shadow;
+          box-shadow: $generic-box-shadow;
   position: absolute;
   width: 100%;
   z-index: 1;
@@ -45,20 +48,27 @@ $generic-bg: #db4c3f;
 }
 
 @mixin va($va-align: center) {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 
   @if $va-align != center {
-    justify-content: left;
+    -webkit-box-pack: left;
+        -ms-flex-pack: left;
+            justify-content: left;
   } @else {
-    justify-content: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
   }
 }
 
 @mixin no-select {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
-  -khtml-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
@@ -91,8 +101,15 @@ $generic-bg: #db4c3f;
   margin: 2px 5px;
 }
 
+@mixin transparent-button() {
+  background-color: transparent;
+  border: 0;
+}
+
 @mixin task-item() {
   list-style-type: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   line-height: 18px;
   color: #333;
@@ -131,8 +148,10 @@ $generic-bg: #db4c3f;
 header {
   border-bottom: solid 1px #ca2100;
   background-color: $generic-bg;
+  -webkit-transition: height 200ms ease-in;
   transition: height 200ms ease-in;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
   height: 44px;
   z-index: 400;
   position: fixed;
@@ -145,7 +164,9 @@ header {
 
   nav {
     display: grid;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
     grid-column-gap: 0px;
@@ -196,11 +217,29 @@ header {
           &.settings__add {
             margin-right: 15px;
             font-size: 30px;
+
+            button {
+              @include transparent-button();
+              color: white;
+              cursor: pointer;
+            }
           }
 
-          &.settings__dark-mode svg {
-            width: 20px;
-            height: 20px;
+          &.settings__darkmode {
+            button {
+              @include transparent-button();
+              color: white;
+              cursor: pointer;
+              display: -webkit-box;
+              display: -ms-flexbox;
+              display: flex;
+
+              svg {
+                width: 20px;
+                height: 20px;
+              }
+            }
+
           }
         }
       }
@@ -226,17 +265,28 @@ header {
   }
 
   li {
-    padding-left: 10px;
-    padding-right: 15px;
-
     &:hover .sidebar__project-delete {
-      display: block;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
     }
   }
 
   &__project {
-    padding: 5px 0;
     cursor: pointer;
+
+    div:nth-child(1) {
+      padding: 5px 0;
+      padding-left: 10px;
+      padding-right: 15px;
+      width: 100%;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
+    }
 
     &-delete {
       margin-left: auto;
@@ -295,6 +345,8 @@ header {
   &__middle {
     margin-top: 20px;
     margin-bottom: 20px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     border-bottom: $generic-border;
     padding-left: 10px;
@@ -305,7 +357,8 @@ header {
       margin-right: 10px;
 
       svg.hidden-projects {
-        transform: rotate(-90deg);
+        -webkit-transform: rotate(-90deg);
+                transform: rotate(-90deg);
       }
     }
 
@@ -320,21 +373,38 @@ header {
 
   &__generic {
     li {
-      padding: 10px 0 10px 10px;
       list-style-type: none;
       color: #333;
+      display: -webkit-box;
+      display: -ms-flexbox;
       display: flex;
       cursor: pointer;
       line-height: 1.50;
       font-size: 15px;
+      padding-left: 0;
+      padding-right: 0;
 
-      span:first-of-type {
-        margin-right: 10px;
+      div:nth-child(1) {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        padding: 10px 0 10px 10px;
+        width: 100%;
 
-        svg {
-          width: 18px;
-          height: 18px;
-          color: #555;
+        span:first-of-type {
+          margin-right: 10px;
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-align: center;
+              -ms-flex-align: center;
+                  align-items: center;
+
+          svg {
+            width: 18px;
+            height: 18px;
+            color: #555;
+          }
         }
       }
 
@@ -382,7 +452,9 @@ header {
   ============================================ */
 .content {
   display: grid;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   grid-template-columns: 1fr auto;
   max-width: 922px;
   margin: auto;
@@ -392,7 +464,7 @@ header {
   ============================================ */
 .tasks {
   width: 656px;
-  background-color: #fff;
+  background-color: white;
   margin-left: 266px;
   border-right: $generic-border;
   min-height: calc(100vh);
@@ -418,6 +490,8 @@ header {
   }
 
   &__list li {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     line-height: 18px;
     color: #333;
@@ -429,9 +503,15 @@ header {
 
     .checkbox-holder {
       margin-right: 20px;
+      display: -webkit-box;
+      display: -ms-flexbox;
       display: flex;
-      align-items: center;
-      justify-content: center;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
+      -webkit-box-pack: center;
+          -ms-flex-pack: center;
+              justify-content: center;
       line-height: 16px;
 
       .checkbox {
@@ -460,7 +540,8 @@ header {
     width: 100%;
     height: 100%;
     z-index: 2000;
-    transition: opacity .2s ease-in;
+    -webkit-transition: opacity 0.2s ease-in;
+    transition: opacity 0.2s ease-in;
     height: calc(100vh);
 
     .add-task__main {
@@ -468,12 +549,13 @@ header {
       margin-bottom: 20px;
       margin-top: 55px;
       border-radius: 5px;
-      background-color: #fff;
+      background-color: white;
       position: absolute;
       left: 50%;
       top: 50%;
       padding: 20px 30px;
-      transform: translate(-50%,-50%);
+      -webkit-transform: translate(-50%, -50%);
+              transform: translate(-50%, -50%);
 
       .header {
         font-size: 13px;
@@ -526,7 +608,7 @@ header {
   }
 
   &__submit {
-    @include btn(90px);
+    @include btn('90px');
   }
 }
 
@@ -558,12 +640,24 @@ header {
 
   &__list li {
     @include task-item();
+    padding: 0;
 
-    span:first-of-type {
-      margin-right: 10px;
+    div:nth-child(1) {
+      padding: 10px;
+      width: 100%;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
 
-      svg {
-        fill: grey;
+      span:first-of-type {
+        margin-right: 10px;
+
+        svg {
+          fill: grey;
+        }
       }
     }
   }
@@ -573,10 +667,16 @@ header {
   ============================================ */
 .project-overlay {
   @include box-overlay();
-  background-color: #fff;
+  background-color: white;
 
   &__list li {
     @include task-item();
+    padding: 0;
+
+    div:nth-child(1) {
+      width: 100%;
+      padding: 10px;
+    }
   }
 }
 
@@ -602,7 +702,7 @@ header {
   }
 
   &__submit {
-    @include btn(100px);
+    @include btn('100px');
   }
 
   &__cancel {
