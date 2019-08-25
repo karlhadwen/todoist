@@ -1,11 +1,9 @@
-/* eslint-disable no-unused-expressions */
-/* eslint-disable no-nested-ternary */
 import React, { useEffect } from 'react';
 import { Checkbox } from './Checkbox';
 import { AddTask } from './AddTask';
+import { useTasks } from '../hooks';
 import { collatedTasks } from '../constants';
 import { getTitle, getCollatedTitle, collatedTasksExist } from '../helpers';
-import { useTasks } from '../hooks';
 import { useSelectedProjectValue, useProjectsValue } from '../context';
 
 export const Tasks = () => {
@@ -15,12 +13,17 @@ export const Tasks = () => {
 
   let projectName = '';
 
-  if (projects && selectedProject && !collatedTasksExist(selectedProject)) {
-    projectName = getTitle(projects, selectedProject).name;
-  }
-
   if (collatedTasksExist(selectedProject) && selectedProject) {
     projectName = getCollatedTitle(collatedTasks, selectedProject).name;
+  }
+
+  if (
+    projects &&
+    projects.length > 0 &&
+    selectedProject &&
+    !collatedTasksExist(selectedProject)
+  ) {
+    projectName = getTitle(projects, selectedProject).name;
   }
 
   useEffect(() => {
@@ -34,7 +37,7 @@ export const Tasks = () => {
       <ul className="tasks__list">
         {tasks.map(task => (
           <li key={`${task.id}`}>
-            <Checkbox id={task.id} />
+            <Checkbox id={task.id} taskDesc={task.task} />
             <span>{task.task}</span>
           </li>
         ))}

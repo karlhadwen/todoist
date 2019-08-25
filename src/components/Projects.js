@@ -1,7 +1,5 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React, { useState } from 'react';
+
 import { useSelectedProjectValue, useProjectsValue } from '../context';
 import { IndividualProject } from './IndividualProject';
 
@@ -15,19 +13,30 @@ export const Projects = ({ activeValue = null }) => {
     projects.map(project => (
       <li
         key={project.projectId}
+        data-testid="project-action-parent"
         data-doc-id={project.docId}
-        data-testid="project-action"
         className={
           active === project.projectId
             ? 'active sidebar__project'
             : 'sidebar__project'
         }
-        onClick={() => {
-          setActive(project.projectId);
-          setSelectedProject(project.projectId);
-        }}
       >
-        <IndividualProject project={project} />
+        <div
+          role="button"
+          data-testid="project-action"
+          tabIndex={0}
+          aria-label={`Select ${project.name} as the task project`}
+          onClick={() => {
+            setActive(project.projectId);
+            setSelectedProject(project.projectId);
+          }}
+          onKeyDown={() => {
+            setActive(project.projectId);
+            setSelectedProject(project.projectId);
+          }}
+        >
+          <IndividualProject project={project} />
+        </div>
       </li>
     ))
   );

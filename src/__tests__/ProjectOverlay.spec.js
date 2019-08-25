@@ -1,9 +1,9 @@
 import React from 'react';
-import { render, cleanup, fireEvent } from '@testing-library/react';
+import { render, fireEvent, cleanup } from '@testing-library/react';
 import { ProjectOverlay } from '../components/ProjectOverlay';
 import { useProjectsValue } from '../context';
 
-beforeEach(cleanup); // clean clean clean the DOM!
+beforeEach(cleanup); // thanks!
 
 jest.mock('../context', () => ({
   useProjectsValue: jest.fn(() => ({
@@ -18,9 +18,13 @@ jest.mock('../context', () => ({
   })),
 }));
 
-describe('<ProjectOverlay />', () => {
+describe('<ProjectOverlay', () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   describe('Success', () => {
-    it('it renders the project overlay', () => {
+    it('renders the project overlay and calls setShowProjectOverlay using onClick', () => {
       const showProjectOverlay = true;
       const setProject = jest.fn();
       const setShowProjectOverlay = jest.fn(() => !showProjectOverlay);
@@ -34,8 +38,25 @@ describe('<ProjectOverlay />', () => {
       );
 
       expect(queryByTestId('project-overlay')).toBeTruthy();
-
       fireEvent.click(queryByTestId('project-overlay-action'));
+      expect(setProject).toHaveBeenCalled();
+    });
+
+    it('renders the project overlay and calls setShowProjectOverlay using onKeyDown', () => {
+      const showProjectOverlay = true;
+      const setProject = jest.fn();
+      const setShowProjectOverlay = jest.fn(() => !showProjectOverlay);
+
+      const { queryByTestId } = render(
+        <ProjectOverlay
+          showProjectOverlay
+          setProject={setProject}
+          setShowProjectOverlay={setShowProjectOverlay}
+        />
+      );
+
+      expect(queryByTestId('project-overlay')).toBeTruthy();
+      fireEvent.keyDown(queryByTestId('project-overlay-action'));
       expect(setProject).toHaveBeenCalled();
     });
   });

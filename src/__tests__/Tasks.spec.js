@@ -57,14 +57,13 @@ jest.mock('../hooks', () => ({
   }),
 }));
 
-afterEach(cleanup);
+beforeEach(cleanup);
 
 describe('<Tasks />', () => {
   afterEach(() => {
     jest.clearAllMocks();
   });
 
-  // could override these, but i think it's clearer to show what's going on here
   it('renders tasks', () => {
     useSelectedProjectValue.mockImplementation(() => ({
       setSelectedProject: jest.fn(() => 'INBOX'),
@@ -76,7 +75,7 @@ describe('<Tasks />', () => {
     expect(queryByTestId('project-name').textContent).toBe('Inbox');
   });
 
-  it('renders a project title', () => {
+  it('renders a task with a project title', () => {
     useSelectedProjectValue.mockImplementation(() => ({
       setSelectedProject: jest.fn(() => '1'),
       selectedProject: '1',
@@ -87,7 +86,7 @@ describe('<Tasks />', () => {
     expect(queryByTestId('project-name').textContent).toBe('🙌 THE OFFICE');
   });
 
-  it('renders a collated title', () => {
+  it('renders a task with a collated title', () => {
     useSelectedProjectValue.mockImplementation(() => ({
       setSelectedProject: jest.fn(() => 'INBOX'),
       selectedProject: 'INBOX',
