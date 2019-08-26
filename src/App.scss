@@ -545,6 +545,10 @@ header {
     height: calc(100vh);
 
     .add-task__main {
+      @include mq('900px') {
+        width: 90%;
+      }
+
       overflow: visible;
       margin-bottom: 20px;
       margin-top: 55px;
@@ -668,6 +672,11 @@ header {
 .project-overlay {
   @include box-overlay();
   background-color: white;
+
+  @include mq('900px') {
+    width: 200px;
+    right: 0;
+  }
 
   &__list li {
     @include task-item();
