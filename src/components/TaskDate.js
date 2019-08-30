@@ -1,6 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import { FaSpaceShuttle, FaSun, FaRegPaperPlane } from 'react-icons/fa';
+import PropTypes from 'prop-types';
 
 export const TaskDate = ({ setTaskDate, showTaskDate, setShowTaskDate }) =>
   showTaskDate && (
@@ -88,3 +89,10 @@ export const TaskDate = ({ setTaskDate, showTaskDate, setShowTaskDate }) =>
       </ul>
     </div>
   );
+
+  TaskDate.propTypes = {
+    setTaskDate: PropTypes.func.isRequired,
+    showTaskDate: PropTypes.bool.isRequired,
+    setShowTaskDate: PropTypes.func.isRequired,
+  };
+  

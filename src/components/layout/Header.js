@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FaPizzaSlice } from 'react-icons/fa';
+import PropTypes from 'prop-types';
 import { AddTask } from '../AddTask';
 
 export const Header = ({ darkMode, setDarkMode }) => {
@@ -54,4 +55,9 @@ export const Header = ({ darkMode, setDarkMode }) => {
       />
     </header>
   );
+};
+
+Header.propTypes = {
+  darkMode: PropTypes.bool.isRequired,
+  setDarkMode: PropTypes.func.isRequired,
 };
