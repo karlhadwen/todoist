@@ -95,4 +95,3 @@ export const TaskDate = ({ setTaskDate, showTaskDate, setShowTaskDate }) =>
     showTaskDate: PropTypes.bool.isRequired,
     setShowTaskDate: PropTypes.func.isRequired,
   };
-  
