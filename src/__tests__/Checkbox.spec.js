@@ -33,12 +33,15 @@ describe('<Checkbox />', () => {
       fireEvent.click(queryByTestId('checkbox-action'));
     });
 
-    it('renders the task checkbox and accepts a onKeyDown', () => {
+    it('renders the task checkbox and accepts a onKeyPress', () => {
       const { queryByTestId } = render(
         <Checkbox id="1" taskDesc="Finish this tutorial series!" />
       );
       expect(queryByTestId('checkbox-action')).toBeTruthy();
-      fireEvent.keyDown(queryByTestId('checkbox-action'));
+      fireEvent.keyPress(queryByTestId('checkbox-action'), {
+        key: 'Enter',
+        charCode: 13
+      });
     });
   });
 });
