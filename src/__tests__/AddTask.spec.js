@@ -53,10 +53,13 @@ describe('<AddTask />', () => {
       expect(queryByTestId('add-task-main')).toBeTruthy();
     });
 
-    it('renders the <AddTask /> main showable using keyDown', () => {
+    it('renders the <AddTask /> main showable using onKeyPress', () => {
       const { queryByTestId } = render(<AddTask showAddTaskMain />);
 
-      fireEvent.keyDown(queryByTestId('show-main-action'));
+      fireEvent.keyPress(queryByTestId('show-main-action'), {
+        key: "Enter",
+        charCode: 13
+      });
       expect(queryByTestId('add-task-main')).toBeTruthy();
     });
 
@@ -70,13 +73,19 @@ describe('<AddTask />', () => {
       expect(queryByTestId('project-overlay')).toBeTruthy();
     });
 
-    it('renders the <AddTask /> project overlay when using onKeyDown', () => {
+    it('renders the <AddTask /> project overlay when using onKeyPress', () => {
       const { queryByTestId } = render(<AddTask showAddTaskMain />);
 
-      fireEvent.keyDown(queryByTestId('show-main-action'));
+      fireEvent.keyPress(queryByTestId('show-main-action'), {
+        key: "Enter",
+        charCode: 13
+      });
       expect(queryByTestId('add-task-main')).toBeTruthy();
 
-      fireEvent.keyDown(queryByTestId('show-project-overlay'));
+      fireEvent.keyPress(queryByTestId('show-project-overlay'), {
+        key: "Enter",
+        charCode: 13
+      });
       expect(queryByTestId('project-overlay')).toBeTruthy();
     });
 
@@ -90,13 +99,19 @@ describe('<AddTask />', () => {
       expect(queryByTestId('task-date-overlay')).toBeTruthy();
     });
 
-    it('renders the <AddTask /> task date overlay when using onKeyDown', () => {
+    it('renders the <AddTask /> task date overlay when using onKeyPress', () => {
       const { queryByTestId } = render(<AddTask showAddTaskMain />);
 
-      fireEvent.keyDown(queryByTestId('show-main-action'));
+      fireEvent.keyPress(queryByTestId('show-main-action'), {
+        key: "Enter",
+        charCode: 13
+      });
       expect(queryByTestId('add-task-main')).toBeTruthy();
 
-      fireEvent.keyDown(queryByTestId('show-task-date-overlay'));
+      fireEvent.keyPress(queryByTestId('show-task-date-overlay'), {
+        key: "Enter",
+        charCode: 13
+      });
       expect(queryByTestId('task-date-overlay')).toBeTruthy();
     });
 
@@ -110,13 +125,19 @@ describe('<AddTask />', () => {
       expect(queryByTestId('add-task-main')).toBeFalsy();
     });
 
-    it('hides the <AddTask /> main when cancel is clicked using onKeyDown', () => {
+    it('hides the <AddTask /> main when cancel is clicked using onKeyPress', () => {
       const { queryByTestId } = render(<AddTask showAddTaskMain />);
 
-      fireEvent.keyDown(queryByTestId('show-main-action'));
+      fireEvent.keyPress(queryByTestId('show-main-action'), {
+        key: "Enter",
+        charCode: 13
+      });
       expect(queryByTestId('add-task-main')).toBeTruthy();
 
-      fireEvent.keyDown(queryByTestId('add-task-main-cancel'));
+      fireEvent.keyPress(queryByTestId('add-task-main-cancel'), {
+        key: "Enter",
+        charCode: 13
+      });
       expect(queryByTestId('add-task-main')).toBeFalsy();
     });
 
@@ -134,17 +155,23 @@ describe('<AddTask />', () => {
       expect(setShowQuickAddTask).toHaveBeenCalled();
     });
 
-    it('renders <AddTask /> for quick add task and then clicks cancel using onKeyDown', () => {
+    it('renders <AddTask /> for quick add task and then clicks cancel using onKeyPress', () => {
       const showQuickAddTask = true;
       const setShowQuickAddTask = jest.fn(() => !showQuickAddTask);
       const { queryByTestId } = render(
         <AddTask setShowQuickAddTask={setShowQuickAddTask} showQuickAddTask />
       );
 
-      fireEvent.keyDown(queryByTestId('show-main-action'));
+      fireEvent.keyPress(queryByTestId('show-main-action'), {
+        key: "Enter",
+        charCode: 13
+      });
       expect(queryByTestId('add-task-main')).toBeTruthy();
 
-      fireEvent.keyDown(queryByTestId('add-task-quick-cancel'));
+      fireEvent.keyPress(queryByTestId('add-task-quick-cancel'), {
+        key: "Enter",
+        charCode: 13
+      });
       expect(setShowQuickAddTask).toHaveBeenCalled();
     });
 
@@ -228,7 +255,10 @@ describe('<AddTask />', () => {
       fireEvent.click(queryByTestId('show-task-date-overlay'));
       expect(queryByTestId('task-date-overlay')).toBeTruthy();
 
-      fireEvent.keyDown(queryByTestId('task-date-today'));
+      fireEvent.keyPress(queryByTestId('task-date-today'), {
+        key: "Enter",
+        charCode: 13
+      });
       expect(queryByTestId('task-date-overlay')).toBeFalsy();
 
       fireEvent.click(queryByTestId('add-task'));
@@ -260,7 +290,10 @@ describe('<AddTask />', () => {
       fireEvent.click(queryByTestId('show-task-date-overlay'));
       expect(queryByTestId('task-date-overlay')).toBeTruthy();
 
-      fireEvent.keyDown(queryByTestId('task-date-tomorrow'));
+      fireEvent.keyPress(queryByTestId('task-date-tomorrow'), {
+        key: "Enter",
+        charCode: 13
+      });
       expect(queryByTestId('task-date-overlay')).toBeFalsy();
 
       fireEvent.click(queryByTestId('add-task'));
@@ -292,7 +325,10 @@ describe('<AddTask />', () => {
       fireEvent.click(queryByTestId('show-task-date-overlay'));
       expect(queryByTestId('task-date-overlay')).toBeTruthy();
 
-      fireEvent.keyDown(queryByTestId('task-date-next-week'));
+      fireEvent.keyPress(queryByTestId('task-date-next-week'), {
+        key: "Enter",
+        charCode: 13
+      });
       expect(queryByTestId('task-date-overlay')).toBeFalsy();
 
       fireEvent.click(queryByTestId('add-task'));
