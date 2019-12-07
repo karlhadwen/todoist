@@ -57,7 +57,7 @@ describe('<AddTask />', () => {
       const { queryByTestId } = render(<AddTask showAddTaskMain />);
 
       fireEvent.keyPress(queryByTestId('show-main-action'), {
-        key: "Enter",
+        key: 'Enter',
         charCode: 13
       });
       expect(queryByTestId('add-task-main')).toBeTruthy();
@@ -77,13 +77,13 @@ describe('<AddTask />', () => {
       const { queryByTestId } = render(<AddTask showAddTaskMain />);
 
       fireEvent.keyPress(queryByTestId('show-main-action'), {
-        key: "Enter",
+        key: 'Enter',
         charCode: 13
       });
       expect(queryByTestId('add-task-main')).toBeTruthy();
 
       fireEvent.keyPress(queryByTestId('show-project-overlay'), {
-        key: "Enter",
+        key: 'Enter',
         charCode: 13
       });
       expect(queryByTestId('project-overlay')).toBeTruthy();
@@ -103,13 +103,13 @@ describe('<AddTask />', () => {
       const { queryByTestId } = render(<AddTask showAddTaskMain />);
 
       fireEvent.keyPress(queryByTestId('show-main-action'), {
-        key: "Enter",
+        key: 'Enter',
         charCode: 13
       });
       expect(queryByTestId('add-task-main')).toBeTruthy();
 
       fireEvent.keyPress(queryByTestId('show-task-date-overlay'), {
-        key: "Enter",
+        key: 'Enter',
         charCode: 13
       });
       expect(queryByTestId('task-date-overlay')).toBeTruthy();
@@ -129,13 +129,13 @@ describe('<AddTask />', () => {
       const { queryByTestId } = render(<AddTask showAddTaskMain />);
 
       fireEvent.keyPress(queryByTestId('show-main-action'), {
-        key: "Enter",
+        key: 'Enter',
         charCode: 13
       });
       expect(queryByTestId('add-task-main')).toBeTruthy();
 
       fireEvent.keyPress(queryByTestId('add-task-main-cancel'), {
-        key: "Enter",
+        key: 'Enter',
         charCode: 13
       });
       expect(queryByTestId('add-task-main')).toBeFalsy();
@@ -163,13 +163,13 @@ describe('<AddTask />', () => {
       );
 
       fireEvent.keyPress(queryByTestId('show-main-action'), {
-        key: "Enter",
+        key: 'Enter',
         charCode: 13
       });
       expect(queryByTestId('add-task-main')).toBeTruthy();
 
       fireEvent.keyPress(queryByTestId('add-task-quick-cancel'), {
-        key: "Enter",
+        key: 'Enter',
         charCode: 13
       });
       expect(setShowQuickAddTask).toHaveBeenCalled();
@@ -256,7 +256,7 @@ describe('<AddTask />', () => {
       expect(queryByTestId('task-date-overlay')).toBeTruthy();
 
       fireEvent.keyPress(queryByTestId('task-date-today'), {
-        key: "Enter",
+        key: 'Enter',
         charCode: 13
       });
       expect(queryByTestId('task-date-overlay')).toBeFalsy();
@@ -291,7 +291,7 @@ describe('<AddTask />', () => {
       expect(queryByTestId('task-date-overlay')).toBeTruthy();
 
       fireEvent.keyPress(queryByTestId('task-date-tomorrow'), {
-        key: "Enter",
+        key: 'Enter',
         charCode: 13
       });
       expect(queryByTestId('task-date-overlay')).toBeFalsy();
@@ -326,7 +326,7 @@ describe('<AddTask />', () => {
       expect(queryByTestId('task-date-overlay')).toBeTruthy();
 
       fireEvent.keyPress(queryByTestId('task-date-next-week'), {
-        key: "Enter",
+        key: 'Enter',
         charCode: 13
       });
       expect(queryByTestId('task-date-overlay')).toBeFalsy();

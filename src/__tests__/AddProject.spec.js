@@ -84,8 +84,8 @@ describe('<AddProject />', () => {
       expect(queryByTestId('project-name').value).toBe(
         'Best project in the world!'
       );
-      fireEvent.keyPress(queryByTestId("add-project-submit"), {
-        key: "Enter",
+      fireEvent.keyPress(queryByTestId('add-project-submit'), {
+        key: 'Enter',
         charCode: 13
       });
     });
@@ -105,8 +105,8 @@ describe('<AddProject />', () => {
       expect(queryByTestId('add-project')).toBeTruthy();
       expect(queryByTestId('add-project-inner')).toBeTruthy();
 
-      fireEvent.keyPress(getByText("Cancel"), {
-        key: "Enter",
+      fireEvent.keyPress(getByText('Cancel'), {
+        key: 'Enter',
         charCode: 13
       });
       expect(queryByTestId('add-project')).toBeTruthy();
@@ -128,8 +128,8 @@ describe('<AddProject />', () => {
       expect(queryByTestId('add-project')).toBeTruthy();
       expect(queryByTestId('add-project-inner')).toBeTruthy();
 
-      fireEvent.keyPress(queryByTestId("add-project-action"), {
-        key: "Enter",
+      fireEvent.keyPress(queryByTestId('add-project-action'), {
+        key: 'Enter',
         charCode: 13
       });
       expect(queryByTestId('add-project')).toBeTruthy();
