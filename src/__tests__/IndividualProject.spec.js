@@ -63,12 +63,15 @@ describe('<IndividualProject />', () => {
       fireEvent.click(getByText('Delete'));
     });
 
-    it('renders the delete overlay and then deletes a project using onKeyDown', () => {
+    it('renders the delete overlay and then deletes a project using onKeyPress', () => {
       const { queryByTestId, getByText } = render(
         <IndividualProject project={project} />
       );
 
-      fireEvent.keyDown(queryByTestId('delete-project'));
+      fireEvent.keyPress(queryByTestId('delete-project'), {
+        key: 'Enter',
+        charCode: 13
+      });
       expect(
         getByText('Are you sure you want to delete this project?')
       ).toBeTruthy();
@@ -89,7 +92,7 @@ describe('<IndividualProject />', () => {
       fireEvent.click(getByText('Cancel'));
     });
 
-    it('renders the delete overlay and then cancels using onKeyDown', () => {
+    it('renders the delete overlay and then cancels using onKeyPress', () => {
       const { queryByTestId, getByText } = render(
         <IndividualProject project={project} />
       );
@@ -99,7 +102,10 @@ describe('<IndividualProject />', () => {
         getByText('Are you sure you want to delete this project?')
       ).toBeTruthy();
 
-      fireEvent.keyDown(getByText('Cancel'));
+      fireEvent.keyPress(queryByTestId('Cancel'), {
+        key: 'Enter',
+        charCode: 13
+      });
     });
   });
 });
