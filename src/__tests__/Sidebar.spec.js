@@ -32,7 +32,10 @@ describe('<Sidebar />', () => {
       const { queryByTestId } = render(<Sidebar />);
       expect(queryByTestId('sidebar')).toBeTruthy();
       fireEvent.click(queryByTestId('inbox-action'));
-      fireEvent.keyDown(queryByTestId('inbox-action'));
+      fireEvent.keyPress(queryByTestId('inbox-action'), {
+        key: 'Enter',
+        charCode: 13
+      });
 
       expect(queryByTestId('inbox').classList.contains('active')).toBeTruthy();
       expect(queryByTestId('today').classList.contains('active')).toBeFalsy();
@@ -43,7 +46,10 @@ describe('<Sidebar />', () => {
       const { queryByTestId } = render(<Sidebar />);
       expect(queryByTestId('sidebar')).toBeTruthy();
       fireEvent.click(queryByTestId('today-action'));
-      fireEvent.keyDown(queryByTestId('today-action'));
+      fireEvent.keyPress(queryByTestId('today-action'), {
+        key: 'Enter',
+        charCode: 13
+      });
 
       expect(queryByTestId('today').classList.contains('active')).toBeTruthy();
       expect(queryByTestId('inbox').classList.contains('active')).toBeFalsy();
@@ -54,7 +60,10 @@ describe('<Sidebar />', () => {
       const { queryByTestId } = render(<Sidebar />);
       expect(queryByTestId('sidebar')).toBeTruthy();
       fireEvent.click(queryByTestId('next_7-action'));
-      fireEvent.keyDown(queryByTestId('next_7-action'));
+      fireEvent.keyPress(queryByTestId('next_7-action'), {
+        key: 'Enter',
+        charCode: 13
+      });
 
       expect(queryByTestId('next_7').classList.contains('active')).toBeTruthy();
       expect(queryByTestId('today').classList.contains('active')).toBeFalsy();
@@ -72,14 +81,20 @@ describe('<Sidebar />', () => {
       expect(queryByText('Add Project')).toBeTruthy();
     });
 
-    it('hides and shows the sidebar projects using onKeyDown', () => {
+    it('hides and shows the sidebar projects using onKeyPress', () => {
       const { queryByTestId, queryByText, getByText } = render(<Sidebar />);
       expect(queryByTestId('sidebar')).toBeTruthy();
 
-      fireEvent.keyDown(getByText('Projects'));
+      fireEvent.keyPress(queryByText('Projects'), {
+        key: 'Enter',
+        charCode: 13
+      });
       expect(queryByText('Add Project')).toBeFalsy();
 
-      fireEvent.keyDown(getByText('Projects'));
+      fireEvent.keyPress(queryByText('Projects'), {
+        key: 'Enter',
+        charCode: 13
+      });
       expect(queryByText('Add Project')).toBeTruthy();
     });
   });
