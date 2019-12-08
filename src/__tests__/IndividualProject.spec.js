@@ -105,7 +105,7 @@ describe('<IndividualProject />', () => {
         getByText('Are you sure you want to delete this project?')
       ).toBeTruthy();
 
-      fireEvent.keyPress(queryByTestId('Cancel'), {
+      fireEvent.keyPress(getByText('Cancel'), {
         key: 'Enter',
         charCode: 13
       });

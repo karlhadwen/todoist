@@ -85,13 +85,13 @@ describe('<Sidebar />', () => {
       const { queryByTestId, queryByText, getByText } = render(<Sidebar />);
       expect(queryByTestId('sidebar')).toBeTruthy();
 
-      fireEvent.keyPress(queryByText('Projects'), {
+      fireEvent.keyPress(getByText('Projects'), {
         key: 'Enter',
         charCode: 13
       });
       expect(queryByText('Add Project')).toBeFalsy();
 
-      fireEvent.keyPress(queryByText('Projects'), {
+      fireEvent.keyPress(getByText('Projects'), {
         key: 'Enter',
         charCode: 13
       });
