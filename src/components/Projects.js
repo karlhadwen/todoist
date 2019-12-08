@@ -31,7 +31,7 @@ export const Projects = ({ activeValue = null }) => {
             setSelectedProject(project.projectId);
           }}
           onKeyPress={e => {
-            if (e.key === "Enter") {
+            if (e.key === 'Enter') {
               setActive(project.projectId);
               setSelectedProject(project.projectId);
             }

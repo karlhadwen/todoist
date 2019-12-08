@@ -30,7 +30,7 @@ export const IndividualProject = ({ project }) => {
         data-testid="delete-project"
         onClick={() => setShowConfirm(!showConfirm)}
         onKeyPress={e => {
-          if (e.key === "Enter") {
+          if (e.key === 'Enter') {
             setShowConfirm(!showConfirm);
           }
         }}
@@ -52,7 +52,7 @@ export const IndividualProject = ({ project }) => {
               <span
                 onClick={() => setShowConfirm(!showConfirm)}
                 onKeyPress={e => {
-                  if (e.key === "Enter") {
+                  if (e.key === 'Enter') {
                     setShowConfirm(!showConfirm);
                   }
                 }}

@@ -19,7 +19,7 @@ export const Checkbox = ({ id, taskDesc }) => {
       data-testid="checkbox-action"
       onClick={() => archiveTask()}
       onKeyPress={e => {
-        if (e.key === "Enter") {
+        if (e.key === 'Enter') {
           archiveTask();
         }
       }}

@@ -23,7 +23,7 @@ export const ProjectOverlay = ({
                   setShowProjectOverlay(false);
                 }}
                 onKeyPress={e => {
-                  if (e.key === "Enter") {
+                  if (e.key === 'Enter') {
                     setProject(project.projectId);
                     setShowProjectOverlay(false);
                   }

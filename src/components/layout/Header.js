@@ -25,7 +25,7 @@ export const Header = ({ darkMode, setDarkMode }) => {
                   setShouldShowMain(true);
                 }}
                 onKeyPress={e => {
-                  if (e.key === "Enter") {
+                  if (e.key === 'Enter') {
                     setShowQuickAddTask(true);
                     setShouldShowMain(true);
                   }
@@ -41,7 +41,7 @@ export const Header = ({ darkMode, setDarkMode }) => {
                 type="button"
                 onClick={() => setDarkMode(!darkMode)}
                 onKeyPress={e => {
-                  if (e.key === "Enter") {
+                  if (e.key === 'Enter') {
                     setDarkMode(!darkMode);
                   }
                 }}

@@ -44,7 +44,7 @@ export const AddProject = ({ shouldShow = false }) => {
             type="button"
             onClick={() => addProject()}
             onKeyPress={e => {
-              if (e.key === "Enter") {
+              if (e.key === 'Enter') {
                 addProject();
               }
             }}
@@ -59,7 +59,7 @@ export const AddProject = ({ shouldShow = false }) => {
             className="add-project__cancel"
             onClick={() => setShow(false)}
             onKeyPress={e => {
-              if (e.key === "Enter") {
+              if (e.key === 'Enter') {
                 setShow(false);
               }
             }}
@@ -77,7 +77,7 @@ export const AddProject = ({ shouldShow = false }) => {
         className="add-project__text"
         onClick={() => setShow(!show)}
         onKeyPress={e => {
-          if (e.key === "Enter") {
+          if (e.key === 'Enter') {
             setShow(!show);
           }
         }}

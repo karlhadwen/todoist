@@ -67,7 +67,7 @@ export const AddTask = ({
           data-testid="show-main-action"
           onClick={() => setShowMain(!showMain)}
           onKeyPress={e => {
-            if (e.key === "Enter") {
+            if (e.key === 'Enter') {
               setShowMain(!showMain);
             }
           }}
@@ -96,7 +96,7 @@ export const AddTask = ({
                     setShowQuickAddTask(false);
                   }}
                   onKeyPress={e => {
-                    if (e.key === "Enter") {
+                    if (e.key === 'Enter') {
                       setShowMain(false);
                       setShowProjectOverlay(false);
                       setShowQuickAddTask(false);
@@ -149,7 +149,7 @@ export const AddTask = ({
                 setShowProjectOverlay(false);
               }}
               onKeyPress={e => {
-                if (e.key === "Enter") {
+                if (e.key === 'Enter') {
                   setShowMain(false);
                   setShowProjectOverlay(false);
                 }
@@ -166,7 +166,7 @@ export const AddTask = ({
             data-testid="show-project-overlay"
             onClick={() => setShowProjectOverlay(!showProjectOverlay)}
             onKeyPress={e => {
-              if (e.key === "Enter") {
+              if (e.key === 'Enter') {
                 setShowProjectOverlay(!showProjectOverlay);
               }
             }}
@@ -180,7 +180,7 @@ export const AddTask = ({
             data-testid="show-task-date-overlay"
             onClick={() => setShowTaskDate(!showTaskDate)}
             onKeyPress={e => {
-              if (e.key === "Enter") {
+              if (e.key === 'Enter') {
                 setShowTaskDate(!showTaskDate);
               }
             }}
