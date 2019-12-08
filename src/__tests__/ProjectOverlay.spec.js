@@ -42,7 +42,7 @@ describe('<ProjectOverlay', () => {
       expect(setProject).toHaveBeenCalled();
     });
 
-    it('renders the project overlay and calls setShowProjectOverlay using onKeyDown', () => {
+    it('renders the project overlay and calls setShowProjectOverlay using onKeyPress', () => {
       const showProjectOverlay = true;
       const setProject = jest.fn();
       const setShowProjectOverlay = jest.fn(() => !showProjectOverlay);
@@ -56,7 +56,10 @@ describe('<ProjectOverlay', () => {
       );
 
       expect(queryByTestId('project-overlay')).toBeTruthy();
-      fireEvent.keyDown(queryByTestId('project-overlay-action'));
+      fireEvent.keyPress(queryByTestId('project-overlay-action'), {
+        key: 'Enter',
+        charCode: 13
+      });
       expect(setProject).toHaveBeenCalled();
     });
   });
