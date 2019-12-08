@@ -24,12 +24,6 @@ export const Header = ({ darkMode, setDarkMode }) => {
                   setShowQuickAddTask(true);
                   setShouldShowMain(true);
                 }}
-                onKeyPress={e => {
-                  if (e.key === 'Enter') {
-                    setShowQuickAddTask(true);
-                    setShouldShowMain(true);
-                  }
-                }}
               >
                 +
               </button>
@@ -40,11 +34,6 @@ export const Header = ({ darkMode, setDarkMode }) => {
                 aria-label="Darkmode on/off"
                 type="button"
                 onClick={() => setDarkMode(!darkMode)}
-                onKeyPress={e => {
-                  if (e.key === 'Enter') {
-                    setDarkMode(!darkMode);
-                  }
-                }}
               >
                 <FaPizzaSlice />
               </button>

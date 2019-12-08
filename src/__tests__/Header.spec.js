@@ -29,28 +29,6 @@ describe('<Header />', () => {
       expect(setDarkMode).toHaveBeenCalledWith(true);
     });
 
-    it('renders the header component and activates dark mode using onKeyPress', () => {
-      const darkMode = false;
-      const setDarkMode = jest.fn(() => !darkMode);
-
-      const { queryByTestId } = render(
-        <Header darkMode={darkMode} setDarkMode={setDarkMode} />
-      );
-      expect(queryByTestId('header')).toBeTruthy();
-
-      fireEvent.keyPress(queryByTestId('dark-mode-action'), {
-        key: 'Enter',
-        charCode: 13
-      });
-      expect(setDarkMode).toHaveBeenCalledWith(true);
-
-      fireEvent.keyPress(queryByTestId('dark-mode-action'), {
-        key: 'Enter',
-        charCode: 13
-      });      
-      expect(setDarkMode).toHaveBeenCalledTimes(2);
-    });
-
     it('renders the header component and set quick add task to true using onClick', () => {
       const darkMode = false;
 
@@ -61,29 +39,13 @@ describe('<Header />', () => {
       expect(queryByTestId('add-task-main')).toBeTruthy();
     });
 
-    it('renders the header component and set quick add task to true using onKeyPress', () => {
-      const darkMode = false;
-
-      const { queryByTestId } = render(<Header darkMode={darkMode} />);
-      expect(queryByTestId('header')).toBeTruthy();
-
-      fireEvent.keyPress(queryByTestId('quick-add-task-action'), {
-        key: 'Enter',
-        charCode: 13
-      });
-      expect(queryByTestId('add-task-main')).toBeTruthy();
-    });
-
     it('renders the header component and set quick add task to true and then false using onKeyPress', () => {
       const darkMode = false;
 
       const { queryByTestId } = render(<Header darkMode={darkMode} />);
       expect(queryByTestId('header')).toBeTruthy();
 
-      fireEvent.keyPress(queryByTestId('quick-add-task-action'), {
-        key: 'Enter',
-        charCode: 13
-      });
+      fireEvent.click(queryByTestId('quick-add-task-action'));
       expect(queryByTestId('add-task-main')).toBeTruthy();
 
       fireEvent.keyPress(queryByTestId('add-task-quick-cancel'), {
