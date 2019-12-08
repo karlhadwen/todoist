@@ -97,7 +97,10 @@ describe('<IndividualProject />', () => {
         <IndividualProject project={project} />
       );
 
-      fireEvent.keyDown(queryByTestId('delete-project'));
+      fireEvent.keyPress(queryByTestId('delete-project'), {
+        key: 'Enter',
+        charCode: 13
+      });
       expect(
         getByText('Are you sure you want to delete this project?')
       ).toBeTruthy();
