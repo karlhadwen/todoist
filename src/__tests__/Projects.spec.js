@@ -41,11 +41,14 @@ describe('<ProjectOverlay', () => {
       ).toBeTruthy();
     });
 
-    it('renders the projects and selects an active project using onKeyDown', () => {
+    it('renders the projects and selects an active project using onKeyPress', () => {
       const { queryByTestId } = render(<Projects activeValue="1" />);
       expect(queryByTestId('project-action')).toBeTruthy();
 
-      fireEvent.keyDown(queryByTestId('project-action'));
+      fireEvent.keyPress(queryByTestId('project-action'), {
+        key: 'Enter',
+        charCode: 13
+      });
       expect(
         queryByTestId('project-action-parent').classList.contains('active')
       ).toBeTruthy();
