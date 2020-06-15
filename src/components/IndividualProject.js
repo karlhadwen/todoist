@@ -29,7 +29,7 @@ export const IndividualProject = ({ project }) => {
         className="sidebar__project-delete"
         data-testid="delete-project"
         onClick={() => setShowConfirm(!showConfirm)}
-        onKeyDown={() => setShowConfirm(!showConfirm)}
+        onKeyDown={(e) => {if (e.key === 'Enter') setShowConfirm(!showConfirm)}}
         tabIndex={0}
         role="button"
         aria-label="Confirm deletion of project"
@@ -47,7 +47,7 @@ export const IndividualProject = ({ project }) => {
               </button>
               <span
                 onClick={() => setShowConfirm(!showConfirm)}
-                onKeyDown={() => setShowConfirm(!showConfirm)}
+                onKeyDown={(e) => {if (e.key === 'Enter') setShowConfirm(!showConfirm)}}
                 tabIndex={0}
                 role="button"
                 aria-label="Cancel adding project, do not delete"
