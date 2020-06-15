@@ -38,7 +38,14 @@ describe('<Checkbox />', () => {
         <Checkbox id="1" taskDesc="Finish this tutorial series!" />
       );
       expect(queryByTestId('checkbox-action')).toBeTruthy();
-      fireEvent.keyDown(queryByTestId('checkbox-action'));
+      fireEvent.keyDown(queryByTestId('checkbox-action'), {
+        key: 'a',
+        code: 65,
+      });
+      fireEvent.keyDown(queryByTestId('checkbox-action'), {
+        key: 'Enter',
+        code: 13,
+      });
     });
   });
 });
