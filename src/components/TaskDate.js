@@ -13,9 +13,11 @@ export const TaskDate = ({ setTaskDate, showTaskDate, setShowTaskDate }) =>
               setShowTaskDate(false);
               setTaskDate(moment().format('DD/MM/YYYY'));
             }}
-            onKeyDown={() => {
-              setShowTaskDate(false);
-              setTaskDate(moment().format('DD/MM/YYYY'));
+            onKeyDown={(e) => {
+              if (e.key === 'Enter'){ 
+                setShowTaskDate(false);
+                setTaskDate(moment().format('DD/MM/YYYY'));
+              }
             }}
             data-testid="task-date-today"
             tabIndex={0}
@@ -38,13 +40,15 @@ export const TaskDate = ({ setTaskDate, showTaskDate, setShowTaskDate }) =>
                   .format('DD/MM/YYYY')
               );
             }}
-            onKeyDown={() => {
-              setShowTaskDate(false);
-              setTaskDate(
-                moment()
-                  .add(1, 'day')
-                  .format('DD/MM/YYYY')
-              );
+            onKeyDown={(e) => {
+              if (e.key === 'Enter'){ 
+                setShowTaskDate(false);
+                setTaskDate(
+                  moment()
+                    .add(1, 'day')
+                    .format('DD/MM/YYYY')
+                );
+              }
             }}
             data-testid="task-date-tomorrow"
             role="button"
@@ -67,13 +71,15 @@ export const TaskDate = ({ setTaskDate, showTaskDate, setShowTaskDate }) =>
                   .format('DD/MM/YYYY')
               );
             }}
-            onKeyDown={() => {
-              setShowTaskDate(false);
-              setTaskDate(
-                moment()
-                  .add(7, 'days')
-                  .format('DD/MM/YYYY')
-              );
+            onKeyDown={(e) => {
+              if (e.key === 'Enter'){ 
+                setShowTaskDate(false);
+                setTaskDate(
+                  moment()
+                    .add(7, 'days')
+                    .format('DD/MM/YYYY')
+                );
+              }
             }}
             data-testid="task-date-next-week"
             aria-label="Select next week as the task date"
