@@ -57,7 +57,7 @@ beforeEach(cleanup);
 describe('<AddProject />', () => {
   describe('Success', () => {
     it('renders <AddProject />', () => {
-      const { queryByTestId } = render(<AddProject shouldShow />);
+      const { queryByTestId } = render(<AddProject />);
       expect(queryByTestId('add-project')).toBeTruthy();
     });
 
@@ -84,7 +84,17 @@ describe('<AddProject />', () => {
       expect(queryByTestId('project-name').value).toBe(
         'Best project in the world!'
       );
-      fireEvent.keyDown(queryByTestId('add-project-submit'));
+
+      fireEvent.keyDown(queryByTestId('add-project-submit'), {
+        key: 'a',
+        code: 65,
+      });
+      expect(queryByTestId('project-name')).toBeTruthy();
+
+      fireEvent.keyDown(queryByTestId('add-project-submit'), {
+        key: 'Enter',
+        code: 13,
+      });
     });
 
     it('hides the project overlay when cancelled using onClick', () => {
@@ -97,12 +107,22 @@ describe('<AddProject />', () => {
       expect(queryByTestId('add-project-inner')).toBeFalsy();
     });
 
-    it('hides the project overlay when cancelled onKeydown', () => {
+    it('hides the project overlay when cancelled onKeyDown', () => {
       const { queryByTestId, getByText } = render(<AddProject shouldShow />);
       expect(queryByTestId('add-project')).toBeTruthy();
       expect(queryByTestId('add-project-inner')).toBeTruthy();
 
-      fireEvent.keyDown(getByText('Cancel'));
+      fireEvent.keyDown(getByText('Cancel'), {
+        key: 'a',
+        code: 65,
+      });
+      expect(queryByTestId('add-project')).toBeTruthy();
+      expect(queryByTestId('add-project-inner')).toBeTruthy();
+
+      fireEvent.keyDown(getByText('Cancel'), {
+        key: 'Enter',
+        code: 13,
+      });
       expect(queryByTestId('add-project')).toBeTruthy();
       expect(queryByTestId('add-project-inner')).toBeFalsy();
     });
@@ -122,7 +142,17 @@ describe('<AddProject />', () => {
       expect(queryByTestId('add-project')).toBeTruthy();
       expect(queryByTestId('add-project-inner')).toBeTruthy();
 
-      fireEvent.keyDown(queryByTestId('add-project-action'));
+      fireEvent.keyDown(queryByTestId('add-project-action'), {
+        key: 'a',
+        code: 65,
+      });
+      expect(queryByTestId('add-project')).toBeTruthy();
+      expect(queryByTestId('add-project-inner')).toBeTruthy();
+
+      fireEvent.keyDown(queryByTestId('add-project-action'), {
+        key: 'Enter',
+        code: 13,
+      });
       expect(queryByTestId('add-project')).toBeTruthy();
       expect(queryByTestId('add-project-inner')).toBeFalsy();
     });
