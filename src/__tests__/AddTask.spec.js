@@ -200,7 +200,7 @@ describe('<AddTask />', () => {
     it('renders <AddTask /> for quick add task and then clicks cancel using onKeyDown', () => {
       const showQuickAddTask = true;
       const setShowQuickAddTask = jest.fn(() => !showQuickAddTask);
-      const { queryByTestId, debug } = render(
+      const { queryByTestId } = render(
         <AddTask setShowQuickAddTask={setShowQuickAddTask} showQuickAddTask />
       );
       expect(queryByTestId('add-task-main')).toBeTruthy();

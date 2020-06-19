@@ -29,9 +29,7 @@ export const AddTask = ({
     if (projectId === 'TODAY') {
       collatedDate = moment().format('DD/MM/YYYY');
     } else if (projectId === 'NEXT_7') {
-      collatedDate = moment()
-        .add(7, 'days')
-        .format('DD/MM/YYYY');
+      collatedDate = moment().add(7, 'days').format('DD/MM/YYYY');
     }
 
     return (
@@ -66,7 +64,9 @@ export const AddTask = ({
           className="add-task__shallow"
           data-testid="show-main-action"
           onClick={() => setShowMain(!showMain)}
-          onKeyDown={(e) => {if (e.key === 'Enter') setShowMain(!showMain)}}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') setShowMain(!showMain);
+          }}
           tabIndex={0}
           aria-label="Add task"
           role="button"
@@ -92,7 +92,7 @@ export const AddTask = ({
                     setShowQuickAddTask(false);
                   }}
                   onKeyDown={(e) => {
-                    if (e.key === 'Enter'){
+                    if (e.key === 'Enter') {
                       setShowMain(false);
                       setShowProjectOverlay(false);
                       setShowQuickAddTask(false);
@@ -122,7 +122,7 @@ export const AddTask = ({
             data-testid="add-task-content"
             type="text"
             value={task}
-            onChange={e => setTask(e.target.value)}
+            onChange={(e) => setTask(e.target.value)}
           />
           <button
             type="button"
@@ -145,7 +145,7 @@ export const AddTask = ({
                 setShowProjectOverlay(false);
               }}
               onKeyDown={(e) => {
-                if (e.key === 'Enter'){
+                if (e.key === 'Enter') {
                   setShowMain(false);
                   setShowProjectOverlay(false);
                 }
@@ -161,7 +161,9 @@ export const AddTask = ({
             className="add-task__project"
             data-testid="show-project-overlay"
             onClick={() => setShowProjectOverlay(!showProjectOverlay)}
-            onKeyDown={(e) => {if (e.key === 'Enter') setShowProjectOverlay(!showProjectOverlay)}}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') setShowProjectOverlay(!showProjectOverlay);
+            }}
             tabIndex={0}
             role="button"
           >
@@ -171,7 +173,9 @@ export const AddTask = ({
             className="add-task__date"
             data-testid="show-task-date-overlay"
             onClick={() => setShowTaskDate(!showTaskDate)}
-            onKeyDown={(e) => {if (e.key === 'Enter') setShowTaskDate(!showTaskDate)}}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') setShowTaskDate(!showTaskDate);
+            }}
             tabIndex={0}
             role="button"
           >

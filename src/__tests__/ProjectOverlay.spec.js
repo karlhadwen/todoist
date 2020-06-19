@@ -3,7 +3,7 @@ import { render, fireEvent, cleanup } from '@testing-library/react';
 import { ProjectOverlay } from '../components/ProjectOverlay';
 import { useProjectsValue } from '../context';
 
-beforeEach(cleanup); // thanks!
+beforeEach(cleanup);
 
 jest.mock('../context', () => ({
   useProjectsValue: jest.fn(() => ({

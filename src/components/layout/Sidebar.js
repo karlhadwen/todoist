@@ -31,7 +31,7 @@ export const Sidebar = () => {
               setSelectedProject('INBOX');
             }}
             onKeyDown={(e) => {
-              if (e.key === 'Enter'){ 
+              if (e.key === 'Enter') {
                 setActive('inbox');
                 setSelectedProject('INBOX');
               }
@@ -57,7 +57,7 @@ export const Sidebar = () => {
               setSelectedProject('TODAY');
             }}
             onKeyDown={(e) => {
-              if (e.key === 'Enter'){ 
+              if (e.key === 'Enter') {
                 setActive('today');
                 setSelectedProject('TODAY');
               }
@@ -83,7 +83,7 @@ export const Sidebar = () => {
               setSelectedProject('NEXT_7');
             }}
             onKeyDown={(e) => {
-              if (e.key === 'Enter'){
+              if (e.key === 'Enter') {
                 setActive('next_7');
                 setSelectedProject('NEXT_7');
               }
@@ -100,7 +100,9 @@ export const Sidebar = () => {
         className="sidebar__middle"
         aria-label="Show/hide projects"
         onClick={() => setShowProjects(!showProjects)}
-        onKeyDown={(e) => {if (e.key === 'Enter') setShowProjects(!showProjects)}}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') setShowProjects(!showProjects);
+        }}
         role="button"
         tabIndex={0}
       >

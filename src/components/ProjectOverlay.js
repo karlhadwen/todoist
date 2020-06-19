@@ -14,7 +14,7 @@ export const ProjectOverlay = ({
     showProjectOverlay && (
       <div className="project-overlay" data-testid="project-overlay">
         <ul className="project-overlay__list">
-          {projects.map(project => (
+          {projects.map((project) => (
             <li key={project.projectId}>
               <div
                 data-testid="project-overlay-action"
@@ -23,7 +23,7 @@ export const ProjectOverlay = ({
                   setShowProjectOverlay(false);
                 }}
                 onKeyDown={(e) => {
-                  if (e.key === 'Enter'){
+                  if (e.key === 'Enter') {
                     setProject(project.projectId);
                     setShowProjectOverlay(false);
                   }

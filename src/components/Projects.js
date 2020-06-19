@@ -10,7 +10,7 @@ export const Projects = ({ activeValue = null }) => {
 
   return (
     projects &&
-    projects.map(project => (
+    projects.map((project) => (
       <li
         key={project.projectId}
         data-testid="project-action-parent"
@@ -31,7 +31,7 @@ export const Projects = ({ activeValue = null }) => {
             setSelectedProject(project.projectId);
           }}
           onKeyDown={(e) => {
-            if (e.key === 'Enter'){ 
+            if (e.key === 'Enter') {
               setActive(project.projectId);
               setSelectedProject(project.projectId);
             }

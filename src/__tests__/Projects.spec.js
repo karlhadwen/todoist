@@ -2,7 +2,7 @@ import React from 'react';
 import { render, fireEvent, cleanup } from '@testing-library/react';
 import { Projects } from '../components/Projects';
 
-beforeEach(cleanup); // thanks!
+beforeEach(cleanup);
 
 jest.mock('../context', () => ({
   useSelectedProjectValue: jest.fn(() => ({
@@ -71,9 +71,7 @@ describe('<ProjectOverlay', () => {
         code: 65,
       });
       expect(
-        queryByTestId('project-action-parent').classList.contains(
-          'active'
-        )
+        queryByTestId('project-action-parent').classList.contains('active')
       ).toBeFalsy();
 
       fireEvent.keyDown(queryByTestId('project-action'), {
@@ -81,9 +79,7 @@ describe('<ProjectOverlay', () => {
         code: 13,
       });
       expect(
-        queryByTestId('project-action-parent').classList.contains(
-          'active'
-        )
+        queryByTestId('project-action-parent').classList.contains('active')
       ).toBeTruthy();
     });
   });
