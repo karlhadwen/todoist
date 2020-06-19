@@ -56,7 +56,16 @@ describe('<AddTask />', () => {
     it('renders the <AddTask /> main showable using keyDown', () => {
       const { queryByTestId } = render(<AddTask showAddTaskMain />);
 
-      fireEvent.keyDown(queryByTestId('show-main-action'));
+      fireEvent.keyDown(queryByTestId('show-main-action'), {
+        key: 'a',
+        code: 65,
+      });
+      expect(queryByTestId('add-task-main')).toBeFalsy();
+
+      fireEvent.keyDown(queryByTestId('show-main-action'), {
+        key: 'Enter',
+        code: 13,
+      });
       expect(queryByTestId('add-task-main')).toBeTruthy();
     });
 
@@ -73,10 +82,28 @@ describe('<AddTask />', () => {
     it('renders the <AddTask /> project overlay when using onKeyDown', () => {
       const { queryByTestId } = render(<AddTask showAddTaskMain />);
 
-      fireEvent.keyDown(queryByTestId('show-main-action'));
+      fireEvent.keyDown(queryByTestId('show-main-action'), {
+        key: 'a',
+        code: 65,
+      });
+      expect(queryByTestId('add-task-main')).toBeFalsy();
+
+      fireEvent.keyDown(queryByTestId('show-main-action'), {
+        key: 'Enter',
+        code: 13,
+      });
       expect(queryByTestId('add-task-main')).toBeTruthy();
 
-      fireEvent.keyDown(queryByTestId('show-project-overlay'));
+      fireEvent.keyDown(queryByTestId('show-project-overlay'), {
+        key: 'a',
+        code: 65,
+      });
+      expect(queryByTestId('project-overlay')).toBeFalsy();
+
+      fireEvent.keyDown(queryByTestId('show-project-overlay'), {
+        key: 'Enter',
+        code: 13,
+      });
       expect(queryByTestId('project-overlay')).toBeTruthy();
     });
 
@@ -93,10 +120,28 @@ describe('<AddTask />', () => {
     it('renders the <AddTask /> task date overlay when using onKeyDown', () => {
       const { queryByTestId } = render(<AddTask showAddTaskMain />);
 
-      fireEvent.keyDown(queryByTestId('show-main-action'));
+      fireEvent.keyDown(queryByTestId('show-main-action'), {
+        key: 'a',
+        code: 65,
+      });
+      expect(queryByTestId('add-task-main')).toBeFalsy();
+
+      fireEvent.keyDown(queryByTestId('show-main-action'), {
+        key: 'Enter',
+        code: 13,
+      });
       expect(queryByTestId('add-task-main')).toBeTruthy();
 
-      fireEvent.keyDown(queryByTestId('show-task-date-overlay'));
+      fireEvent.keyDown(queryByTestId('show-task-date-overlay'), {
+        key: 'a',
+        code: 65,
+      });
+      expect(queryByTestId('task-date-overlay')).toBeFalsy();
+
+      fireEvent.keyDown(queryByTestId('show-task-date-overlay'), {
+        key: 'Enter',
+        code: 13,
+      });
       expect(queryByTestId('task-date-overlay')).toBeTruthy();
     });
 
@@ -113,10 +158,28 @@ describe('<AddTask />', () => {
     it('hides the <AddTask /> main when cancel is clicked using onKeyDown', () => {
       const { queryByTestId } = render(<AddTask showAddTaskMain />);
 
-      fireEvent.keyDown(queryByTestId('show-main-action'));
+      fireEvent.keyDown(queryByTestId('show-main-action'), {
+        key: 'a',
+        code: 65,
+      });
+      expect(queryByTestId('add-task-main')).toBeFalsy();
+
+      fireEvent.keyDown(queryByTestId('show-main-action'), {
+        key: 'Enter',
+        code: 13,
+      });
       expect(queryByTestId('add-task-main')).toBeTruthy();
 
-      fireEvent.keyDown(queryByTestId('add-task-main-cancel'));
+      fireEvent.keyDown(queryByTestId('add-task-main-cancel'), {
+        key: 'a',
+        code: 65,
+      });
+      expect(queryByTestId('add-task-main')).toBeTruthy();
+
+      fireEvent.keyDown(queryByTestId('add-task-main-cancel'), {
+        key: 'Enter',
+        code: 13,
+      });
       expect(queryByTestId('add-task-main')).toBeFalsy();
     });
 
@@ -140,11 +203,18 @@ describe('<AddTask />', () => {
       const { queryByTestId } = render(
         <AddTask setShowQuickAddTask={setShowQuickAddTask} showQuickAddTask />
       );
-
-      fireEvent.keyDown(queryByTestId('show-main-action'));
       expect(queryByTestId('add-task-main')).toBeTruthy();
 
-      fireEvent.keyDown(queryByTestId('add-task-quick-cancel'));
+      fireEvent.keyDown(queryByTestId('add-task-quick-cancel'), {
+        key: 'a',
+        code: 65,
+      });
+      expect(setShowQuickAddTask).not.toHaveBeenCalled();
+
+      fireEvent.keyDown(queryByTestId('add-task-quick-cancel'), {
+        key: 'Enter',
+        code: 13,
+      });
       expect(setShowQuickAddTask).toHaveBeenCalled();
     });
 
@@ -228,7 +298,16 @@ describe('<AddTask />', () => {
       fireEvent.click(queryByTestId('show-task-date-overlay'));
       expect(queryByTestId('task-date-overlay')).toBeTruthy();
 
-      fireEvent.keyDown(queryByTestId('task-date-today'));
+      fireEvent.keyDown(queryByTestId('task-date-today'), {
+        key: 'a',
+        code: 65,
+      });
+      expect(queryByTestId('task-date-overlay')).toBeTruthy();
+
+      fireEvent.keyDown(queryByTestId('task-date-today'), {
+        key: 'Enter',
+        code: 13,
+      });
       expect(queryByTestId('task-date-overlay')).toBeFalsy();
 
       fireEvent.click(queryByTestId('add-task'));
@@ -260,7 +339,16 @@ describe('<AddTask />', () => {
       fireEvent.click(queryByTestId('show-task-date-overlay'));
       expect(queryByTestId('task-date-overlay')).toBeTruthy();
 
-      fireEvent.keyDown(queryByTestId('task-date-tomorrow'));
+      fireEvent.keyDown(queryByTestId('task-date-tomorrow'), {
+        key: 'a',
+        code: 65,
+      });
+      expect(queryByTestId('task-date-overlay')).toBeTruthy();
+
+      fireEvent.keyDown(queryByTestId('task-date-tomorrow'), {
+        key: 'Enter',
+        code: 13,
+      });
       expect(queryByTestId('task-date-overlay')).toBeFalsy();
 
       fireEvent.click(queryByTestId('add-task'));
@@ -292,7 +380,16 @@ describe('<AddTask />', () => {
       fireEvent.click(queryByTestId('show-task-date-overlay'));
       expect(queryByTestId('task-date-overlay')).toBeTruthy();
 
-      fireEvent.keyDown(queryByTestId('task-date-next-week'));
+      fireEvent.keyDown(queryByTestId('task-date-next-week'), {
+        key: 'a',
+        code: 65,
+      });
+      expect(queryByTestId('task-date-overlay')).toBeTruthy();
+
+      fireEvent.keyDown(queryByTestId('task-date-next-week'), {
+        key: 'Enter',
+        code: 13,
+      });
       expect(queryByTestId('task-date-overlay')).toBeFalsy();
 
       fireEvent.click(queryByTestId('add-task'));

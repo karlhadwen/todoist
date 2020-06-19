@@ -3,7 +3,7 @@ import { render, fireEvent, cleanup } from '@testing-library/react';
 import { ProjectOverlay } from '../components/ProjectOverlay';
 import { useProjectsValue } from '../context';
 
-beforeEach(cleanup); // thanks!
+beforeEach(cleanup);
 
 jest.mock('../context', () => ({
   useProjectsValue: jest.fn(() => ({
@@ -56,7 +56,16 @@ describe('<ProjectOverlay', () => {
       );
 
       expect(queryByTestId('project-overlay')).toBeTruthy();
-      fireEvent.keyDown(queryByTestId('project-overlay-action'));
+      fireEvent.keyDown(queryByTestId('project-overlay-action'), {
+        key: 'a',
+        code: 65,
+      });
+      expect(setProject).not.toHaveBeenCalled();
+
+      fireEvent.keyDown(queryByTestId('project-overlay-action'), {
+        key: 'Enter',
+        code: 13,
+      });
       expect(setProject).toHaveBeenCalled();
     });
   });

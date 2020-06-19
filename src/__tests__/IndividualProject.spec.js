@@ -2,7 +2,7 @@ import React from 'react';
 import { render, fireEvent, cleanup } from '@testing-library/react';
 import { IndividualProject } from '../components/IndividualProject';
 
-beforeEach(cleanup); // thanks!
+beforeEach(cleanup);
 
 jest.mock('../firebase', () => ({
   firebase: {
@@ -68,7 +68,15 @@ describe('<IndividualProject />', () => {
         <IndividualProject project={project} />
       );
 
-      fireEvent.keyDown(queryByTestId('delete-project'));
+      fireEvent.keyDown(queryByTestId('delete-project'), {
+        key: 'a',
+        code: 65,
+      });
+
+      fireEvent.keyDown(queryByTestId('delete-project'), {
+        key: 'Enter',
+        code: 13,
+      });
       expect(
         getByText('Are you sure you want to delete this project?')
       ).toBeTruthy();
@@ -94,12 +102,28 @@ describe('<IndividualProject />', () => {
         <IndividualProject project={project} />
       );
 
-      fireEvent.keyDown(queryByTestId('delete-project'));
+      fireEvent.keyDown(queryByTestId('delete-project'), {
+        key: 'a',
+        code: 65,
+      });
+
+      fireEvent.keyDown(queryByTestId('delete-project'), {
+        key: 'Enter',
+        code: 13,
+      });
       expect(
         getByText('Are you sure you want to delete this project?')
       ).toBeTruthy();
 
-      fireEvent.keyDown(getByText('Cancel'));
+      fireEvent.keyDown(getByText('Cancel'), {
+        key: 'a',
+        code: 65,
+      });
+
+      fireEvent.keyDown(getByText('Cancel'), {
+        key: 'Enter',
+        code: 13,
+      });
     });
   });
 });

@@ -24,10 +24,6 @@ export const Header = ({ darkMode, setDarkMode }) => {
                   setShowQuickAddTask(true);
                   setShouldShowMain(true);
                 }}
-                onKeyDown={() => {
-                  setShowQuickAddTask(true);
-                  setShouldShowMain(true);
-                }}
               >
                 +
               </button>
@@ -38,7 +34,6 @@ export const Header = ({ darkMode, setDarkMode }) => {
                 aria-label="Darkmode on/off"
                 type="button"
                 onClick={() => setDarkMode(!darkMode)}
-                onKeyDown={() => setDarkMode(!darkMode)}
               >
                 <FaPizzaSlice />
               </button>
