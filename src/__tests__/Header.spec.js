@@ -29,40 +29,6 @@ describe('<Header />', () => {
       expect(setDarkMode).toHaveBeenCalledWith(true);
     });
 
-    it('renders the header component and activates dark mode using onKeyDown', () => {
-      const darkMode = false;
-      const setDarkMode = jest.fn(() => !darkMode);
-
-      const { queryByTestId } = render(
-        <Header darkMode={darkMode} setDarkMode={setDarkMode} />
-      );
-      expect(queryByTestId('header')).toBeTruthy();
-
-      fireEvent.keyDown(queryByTestId('dark-mode-action'), {
-        key: 'a',
-        code: 65,
-      });
-      expect(setDarkMode).not.toHaveBeenCalled();
-
-      fireEvent.keyDown(queryByTestId('dark-mode-action'), {
-        key: 'Enter',
-        code: 13,
-      });
-      expect(setDarkMode).toHaveBeenCalledWith(true);
-
-      fireEvent.keyDown(queryByTestId('dark-mode-action'), {
-        key: 'a',
-        code: 65,
-      });
-      expect(setDarkMode).toHaveBeenCalledTimes(1);
-
-      fireEvent.keyDown(queryByTestId('dark-mode-action'), {
-        key: 'Enter',
-        code: 13,
-      });
-      expect(setDarkMode).toHaveBeenCalledTimes(2);
-    });
-
     it('renders the header component and set quick add task to true using onClick', () => {
       const darkMode = false;
 
@@ -71,56 +37,6 @@ describe('<Header />', () => {
 
       fireEvent.click(queryByTestId('quick-add-task-action'));
       expect(queryByTestId('add-task-main')).toBeTruthy();
-    });
-
-    it('renders the header component and set quick add task to true using onKeyDown', () => {
-      const darkMode = false;
-
-      const { queryByTestId } = render(<Header darkMode={darkMode} />);
-      expect(queryByTestId('header')).toBeTruthy();
-
-      fireEvent.keyDown(queryByTestId('quick-add-task-action'), {
-        key: 'a',
-        code: 65,
-      });
-      expect(queryByTestId('add-task-main')).toBeFalsy();
-      
-      fireEvent.keyDown(queryByTestId('quick-add-task-action'), {
-        key: 'Enter',
-        code: 13,
-      });
-      expect(queryByTestId('add-task-main')).toBeTruthy();
-    });
-
-    it('renders the header component and set quick add task to true and then false using onKeyDown', () => {
-      const darkMode = false;
-
-      const { queryByTestId } = render(<Header darkMode={darkMode} />);
-      expect(queryByTestId('header')).toBeTruthy();
-
-      fireEvent.keyDown(queryByTestId('quick-add-task-action'), {
-        key: 'a',
-        code: 65,
-      });
-      expect(queryByTestId('add-task-main')).toBeFalsy();
-
-      fireEvent.keyDown(queryByTestId('quick-add-task-action'), {
-        key: 'Enter',
-        code: 13,
-      });
-      expect(queryByTestId('add-task-main')).toBeTruthy();
-
-      fireEvent.keyDown(queryByTestId('add-task-quick-cancel'), {
-        key: 'a',
-        code: 65,
-      });
-      expect(queryByTestId('add-task-main')).toBeTruthy();
-
-      fireEvent.keyDown(queryByTestId('add-task-quick-cancel'), {
-        key: 'Enter',
-        code: 13,
-      });
-      expect(queryByTestId('add-task-main')).toBeFalsy();
     });
   });
 });

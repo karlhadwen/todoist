@@ -74,29 +74,6 @@ describe('<AddProject />', () => {
       fireEvent.click(queryByTestId('add-project-submit'));
     });
 
-    it('renders <AddProject /> and adds a project using onKeyDown', () => {
-      const { queryByTestId } = render(<AddProject shouldShow />);
-      expect(queryByTestId('add-project')).toBeTruthy();
-
-      fireEvent.change(queryByTestId('project-name'), {
-        target: { value: 'Best project in the world!' },
-      });
-      expect(queryByTestId('project-name').value).toBe(
-        'Best project in the world!'
-      );
-
-      fireEvent.keyDown(queryByTestId('add-project-submit'), {
-        key: 'a',
-        code: 65,
-      });
-      expect(queryByTestId('project-name')).toBeTruthy();
-
-      fireEvent.keyDown(queryByTestId('add-project-submit'), {
-        key: 'Enter',
-        code: 13,
-      });
-    });
-
     it('hides the project overlay when cancelled using onClick', () => {
       const { queryByTestId, getByText } = render(<AddProject shouldShow />);
       expect(queryByTestId('add-project')).toBeTruthy();

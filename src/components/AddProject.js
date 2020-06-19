@@ -43,7 +43,6 @@ export const AddProject = ({ shouldShow = false }) => {
             className="add-project__submit"
             type="button"
             onClick={() => addProject()}
-            onKeyDown={(e) => {if (e.key === 'Enter') addProject()}}
             data-testid="add-project-submit"
           >
             Add Project

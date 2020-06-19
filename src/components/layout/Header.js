@@ -7,6 +7,7 @@ export const Header = ({ darkMode, setDarkMode }) => {
   const [shouldShowMain, setShouldShowMain] = useState(false);
   const [showQuickAddTask, setShowQuickAddTask] = useState(false);
 
+  console.log(darkMode);
   return (
     <header className="header" data-testid="header">
       <nav>
@@ -24,12 +25,6 @@ export const Header = ({ darkMode, setDarkMode }) => {
                   setShowQuickAddTask(true);
                   setShouldShowMain(true);
                 }}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter'){
-                    setShowQuickAddTask(true);
-                    setShouldShowMain(true);
-                  }
-                }}
               >
                 +
               </button>
@@ -40,7 +35,6 @@ export const Header = ({ darkMode, setDarkMode }) => {
                 aria-label="Darkmode on/off"
                 type="button"
                 onClick={() => setDarkMode(!darkMode)}
-                onKeyDown={(e) => {if (e.key === 'Enter') setDarkMode(!darkMode)}}
               >
                 <FaPizzaSlice />
               </button>
