@@ -5,3 +5,13 @@ This application (a Todoist clone) was built using create-react-app as a base, a
 Subscribe to my YouTube channel here: http://bit.ly/CognitiveSurge where I build projects like this! And don't forget, you can contribute to this project (highly encouraged!). One thing I didn't get time to do was incorporate accessibility into this application, so I'd love to see that added!
 
 ![Preview](todoist-preview.png?raw=true)
+
+## Playaround with the code online
+
+You can use Gitpod(an Online Open Source VS Code like IDE which is free for Open Source) for playing around with the code online. With a single click it will launch a workspace and automatically:
+
+- clone this repo.
+- install all the dependencies.
+- run `yarn start`.
+
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/from-referrer/)
