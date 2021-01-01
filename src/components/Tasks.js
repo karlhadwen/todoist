@@ -23,7 +23,12 @@ export const Tasks = () => {
     selectedProject &&
     !collatedTasksExist(selectedProject)
   ) {
-    projectName = getTitle(projects, selectedProject).name;
+    if(getTitle(projects, selectedProject)){
+      projectName = getTitle(projects, selectedProject).name;
+    }
+    else{
+      projectName = null;
+    }
   }
 
   useEffect(() => {

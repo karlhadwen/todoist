@@ -3,6 +3,7 @@ import { collatedTasks } from '../constants';
 export const getTitle = (projects, projectId) =>
   projects.find(project => project.projectId === projectId);
 
+
 export const getCollatedTitle = (projects, key) =>
   projects.find(project => project.key === key);
 
@@ -29,7 +30,6 @@ export const generatePushId = (() => {
     for (i = 0; i < 12; i++) {
       id += PUSH_CHARS.charAt(lastRandChars[i]);
     }
-
     return id;
   };
 })();
