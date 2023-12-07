@@ -5,12 +5,12 @@
   "dependencies": {
     "firebase": "^7.15.2",
     "moment": "^2.27.0",
-    "node-sass": "^4.14.1",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-icons": "^3.10.0",
-    "react-scripts": "3.4.1"
+    "react-scripts": "3.4.1",
+    "sass": "^1.69.5"
   },
   "devDependencies": {
     "@testing-library/react": "^10.3.0",

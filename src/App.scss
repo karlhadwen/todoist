@@ -424,10 +424,12 @@ header {
   &__inner {
     @include box-overlay();
     z-index: 99;
-    width: 200px;
+    min-width: 200px;
     padding: 10px;
     top: 10px;
     right: 0;
+    display: flex;
+    flex-direction: column;
     background-color: white;
 
     p {
@@ -438,6 +440,13 @@ header {
       font-size: 15px;
     }
 
+    .container-button{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+    }
+    
     button {
       @include btn('50px');
     }
